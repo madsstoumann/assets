@@ -1,0 +1,27 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+
+		<symbol id="icon-check" viewBox="0 0 16 16">
+			<title>Check</title>
+			<path d="M14 2.5l-8.5 8.5-3.5-3.5-1.5 1.5 5 5 10-10z"></path>
+		</symbol>
+
+		<symbol id="icon-arrow-right" viewBox="0 0 32 32">
+			<title>arrow-right4</title>
+			<path d="M11 0l-2 2 14 14-14 14 2 2 16-16-16-16z"></path>
+		</symbol>
+
+		<symbol id="icon-close" viewBox="0 0 32 32">
+			<path d="M16.893 16.632l10.922-10.922c0.247-0.247 0.247-0.647 0-0.893s-0.647-0.247-0.893 0l-10.922 10.922-10.922-10.922c-0.247-0.247-0.647-0.247-0.893 0s-0.247 0.647 0 0.893l10.922 10.922-10.922 10.922c-0.247 0.247-0.247 0.647 0 0.893 0.123 0.123 0.285 0.185 0.447 0.185s0.323-0.062 0.447-0.185l10.922-10.922 10.922 10.922c0.123 0.123 0.285 0.185 0.447 0.185s0.323-0.062 0.447-0.185c0.247-0.247 0.247-0.647 0-0.893l-10.922-10.922z"></path>
+		</symbol>
+
+		<symbol id="icon-comment" viewBox="0 0 16 16">
+			<title>comment</title>
+			<path d="M14.5 1c0.825 0 1.5 0.675 1.5 1.5v8c0 0.825-0.675 1.5-1.5 1.5h-5.7l-4.8 4v-4h-2.5c-0.825 0-1.5-0.675-1.5-1.5v-8c0-0.825 0.675-1.5 1.5-1.5h13z"></path>
+		</symbol>
+
+<symbol id="icon-upload" viewBox="0 0 16 16">
+<path d="M7 9h2v-4h3l-4-4-4 4h3zM10 6.75v1.542l4.579 1.708-6.579 2.453-6.579-2.453 4.579-1.708v-1.542l-6 2.25v4l8 3 8-3v-4z"></path>
+</symbol>
+	</defs>
+</svg>

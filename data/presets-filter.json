@@ -1,0 +1,36 @@
+{
+  "key": "filter",
+  "values": [
+    {
+      "name": "watercolor",
+      "description": "Uses an svg-filter to squiggle the image to simulate watercolors",
+      "deletable": true,
+      "value": "brightness(1.3) invert(0.17) saturate(2.6) sepia(0.25) url(url('/docs/assets/svg/filters.svg#squiggly-1'))",
+      "values": [
+        {
+          "brightness": 1.3,
+          "invert": 0.17,
+          "saturate": 2.6,
+          "sepia": 0.25,
+          "url": "url('/docs/assets/svg/filters.svg#squiggly-1')"
+        }
+      ]
+    },
+    {
+      "name": "old photo",
+      "description": "",
+      "deletable": true,
+      "value": "blur(0.2px) brightness(1.1) hue-rotate(5deg) opacity(0.9) saturate(1.3) sepia(0.4)",
+      "values": [
+        {
+          "blur": 0.2,
+          "brightness": 1.1,
+          "hue-rotate": 5,
+          "opacity": 0.9,
+          "saturate": 1.3,
+          "sepia": 0.40
+        }
+      ]
+    }
+  ]
+}

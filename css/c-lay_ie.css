@@ -1,0 +1,100 @@
+/* Layout Block: Stylesheet for Internet Explorere 11 */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+	/* GRID */
+	[data-grid-desktop] .c-lay__item {
+		margin-left: 1.25rem;
+	}
+	[data-grid-desktop="25:25:25:25"] .c-lay__item {
+		min-width: calc(25% - (1.25rem / (4/3)));
+		width: calc(25% - (1.25rem / (4/3)));
+	}
+	[data-grid-desktop="33:33:33"] .c-lay__item { min-width: 33%; width: 33%; }
+	[data-grid-desktop="100"] .c-lay__item { min-width: 100%; width: 100%; }
+
+	/* SECTION-TYPE */
+	[data-section-type] { padding: 0 1.25rem; }
+	[data-section-type="stack"] .c-lay__item { margin-bottom: 1.25rem; }
+	[data-section-type="stack"] .c-lay__item:first-of-type,
+	[data-section-type="slider"] .c-lay__item:first-of-type { margin-left: 0; }
+	[data-section-type='masonry'] .c-lay__inner {
+		column-count: 3;
+		column-gap: 1.25rem;
+	}
+	[data-section-type='masonry'] .c-lay__item {
+		break-inside: avoid;
+		margin-left: 0;
+		padding-bottom: 1.25rem;
+		width: 100%;
+	}
+
+	/* TODO LAYOUT */
+	[data-diagonal] {
+		margin-bottom: 2.5rem;
+		margin-top: 3.75rem;
+		transform: skewY(-4deg);  
+	}
+	[data-diagonal] .c-lay__header {
+		padding: 2.5rem 0 1.25rem 0;
+		transform: skewY(4deg);  
+	}
+	[data-toggle-layout="true"] .c-lay__header {
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0;
+	}
+	[data-toggle-layout="true"] .c-lay__headline {
+		font-size: 1.25rem !important;
+		padding-bottom: 0.625rem;
+	}
+
+
+	/* THEMES */
+	[data-theme="theme01"] {
+		background-color:hsl(195, 20%, 95%);
+		color: hsl(195, 20%, 16%);
+	}
+	[data-theme="theme02"] {
+		background-color: #007399;
+		color: hsl(195, 50%, 98%);
+	}
+	[data-theme="theme03"] {
+		background-color: #4b5668;
+		color: hsl(217, 16%, 98%);
+	}
+	[data-theme="theme04"] {
+		background-color: hsl(210, 24%, 84%);
+		color: hsl(210, 24%, 24%);
+	}
+
+
+
+
+	/* Classes */
+	.c-lay__description {
+		font-size: 1.25rem;
+		margin: 1.25rem 0 2.5rem 0;
+		max-width: 500px;
+	}
+	.c-lay__header {
+		align-items: center;
+		line-height: 1.6;
+		display: flex;
+		flex-direction: column;
+		margin: 0 auto;
+		max-width: 100vw;
+		padding-left: 1.25rem;
+		padding-right: 1.25rem;
+		text-align: center;
+	}
+	.c-lay__headline {
+		font-size: 3rem;
+		line-height: 1.2;
+		margin-top: 1.25rem;
+		max-width: 70%;
+	}
+
+	/* DEMO */
+	body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif; }
+
+}

@@ -1,0 +1,15 @@
+{
+	"key": "unit",
+	"values": [
+		{
+			"name": "gap",
+			"deletable": false,
+			"value": "1rem",
+			"values":
+				{
+					"value": 1,
+					"unit": "rem"
+				}
+		}
+	]
+}

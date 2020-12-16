@@ -1,0 +1,280 @@
+[
+  {
+    "name": "Books",
+    "children": [
+      {
+        "name": "Bestsellers",
+        "children": [
+          {
+            "name": "Stores' Bestsellers",
+            "url": "#1"
+          },
+          {
+            "name": "Top 100",
+            "url": "#2"
+          },
+          {
+            "name": "NY Times Bestsellers",
+            "url": "#3"
+          }
+        ]
+      },
+      {
+        "name": "Browse",
+        "children": [
+          {
+            "name": "Books by Author",
+            "url": "#4"
+          },
+          {
+            "name": "Books by Series",
+            "url": "#5"
+          },
+          {
+            "name": "Book Awards",
+            "url": "#6"
+          },
+          {
+            "name": "Collectible Editions",
+            "url": "#7"
+          },
+          {
+            "name": "Coming Soon by Date",
+            "url": "#8"
+          },
+          {
+            "name": "Kids Books",
+            "url": "#9"
+          },
+          {
+            "name": "New Releases",
+            "url": "#10"
+          },
+          {
+            "name": "Teen Books",
+            "url": "#11"
+          },
+          {
+            "name": "This Season's Most Anticipated Books",
+            "url": "#12"
+          },
+          {
+            "name": "Top Books of the Month",
+            "url": "#13"
+          }
+        ]
+      },
+      {
+        "name": "Subjects",
+        "children": [
+          {
+            "name": "Biography",
+            "url": "#14"
+          },
+          {
+            "name": "Business",
+            "url": "#15"
+          },
+          {
+            "name": "Cookbooks, Food & Wine",
+            "url": "#16"
+          },
+          {
+            "name": "Current Affairs & Politics",
+            "url": "#17"
+          },
+          {
+            "name": "Diet, Health & Fitness",
+            "url": "#18"
+          },
+          {
+            "name": "Fiction",
+            "url": "#19"
+          },
+          {
+            "name": "Graphic Novels & Comics",
+            "url": "#20"
+          },
+          {
+            "name": "History",
+            "url": "#21"
+          },
+          {
+            "name": "Mystery & Crime",
+            "url": "#22"
+          },
+          {
+            "name": "Sci-Fi & Fantasy",
+            "url": "#23"
+          }
+        ]
+      },
+      {
+        "name": "Discover",
+        "children": [
+          {
+            "name": "Book Graph™",
+            "url": "#24"
+          },
+          {
+            "name": "Browsery",
+            "url": "#25"
+          },
+          {
+            "name": "Readouts",
+            "url": "#26"
+          },
+          {
+            "name": "Discover Categories",
+            "url": "#27"
+          }
+        ]
+      },
+      {
+        "name": "Featured",
+        "children": [
+          {
+            "name": "Boxed Sets™",
+            "url": "#28"
+          },
+          {
+            "name": "Book Club",
+            "url": "#29"
+          },
+          {
+            "name": "Classics",
+            "url": "#30"
+          },
+          {
+            "name": "Exclusives",
+            "url": "#31"
+          },
+          {
+            "name": "Outlet™",
+            "url": "#32"
+          },
+          {
+            "name": "Signed Books",
+            "url": "#33"
+          },
+          {
+            "name": "Trend Shop",
+            "url": "#34"
+          }
+        ]
+      },
+      {
+        "name": "Blogs",
+        "children": [
+          {
+            "name": "Podcast™",
+            "url": "#35"
+          },
+          {
+            "name": "Biggest Books",
+            "url": "#36"
+          },
+          {
+            "name": "Reads",
+            "url": "#37"
+          },
+          {
+            "name": "Review",
+            "url": "#38"
+          },
+          {
+            "name": "Sci-Fi & Fantasy Blog",
+            "url": "#39"
+          },
+          {
+            "name": "Press Blog",
+            "url": "#40"
+          }
+        ]
+      },
+      {
+        "name": "Special Values",
+        "children": [
+          {
+            "name": "Coupons & Deals",
+            "url": "#41"
+          },
+          {
+            "name": "New Releases & Bestsellers from 20% Off",
+            "url": "#42"
+          },
+          {
+            "name": "Sale",
+            "url": "#43"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Comics",
+    "children": [
+      {
+        "name": "Comics Bestsellers",
+        "children": [
+          {
+            "name": "Stores' Bestsellers",
+            "url": "#1"
+          },
+          {
+            "name": "Top 100",
+            "url": "#2"
+          },
+          {
+            "name": "NY Times Bestsellers",
+            "url": "#3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Games",
+    "children": [
+      {
+        "name": "Games Bestsellers",
+        "children": [
+          {
+            "name": "Stores' Bestsellers",
+            "url": "#1"
+          },
+          {
+            "name": "Top 100",
+            "url": "#2"
+          },
+          {
+            "name": "NY Times Bestsellers",
+            "url": "#3"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bestsellers",
+    "children": [
+      {
+        "name": "Main Bestsellers",
+        "children": [
+          {
+            "name": "Stores' Bestsellers",
+            "url": "#1"
+          },
+          {
+            "name": "Top 100",
+            "url": "#2"
+          },
+          {
+            "name": "NY Times Bestsellers",
+            "url": "#3"
+          }
+        ]
+      }
+    ]
+  }
+]

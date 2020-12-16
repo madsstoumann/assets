@@ -1,0 +1,236 @@
+/**
+ * c-tbl.css
+ * @version 1.1.10
+ * @summary 14-01-2020
+ * @author Mads Stoumann
+ * @description Stylesheet for Tables.
+	Variables are concatinated from: 
+	- element-prefix + 
+	- optional subelement +
+	- emmet-css-abbreviation + 
+	- modifier (:active, :disabled, :focus, :hover)
+	More on emmett: https://docs.emmet.io/cheat-sheet/
+*/
+@import 'config.css';
+
+.c-tbl {
+	--tbl-ico-w: 1em;
+	--tbl-scrl-h: 20rem;
+	--tbl-cap-c: #222;
+	--tbl-td-bdc: #CCC;
+	--tbl-td-bgc: #FEFEFE;
+	--tbl-td-foc-c: hsl(49, 100%, 96%);
+	--tbl-td-p: .5em;
+	--tbl-th-bdc: #888;
+	--tbl-th-bgc: #222;
+	--tbl-th-foc-c: #6bd1f7;
+	--tbl-th-c: #FFF;
+	--tbl-zebra-c: #EEE;
+	--tbl-bdrs: .5rem;
+}
+.c-tbl {
+	border-collapse: collapse;
+	margin-bottom: 1em;
+	position: relative;
+	width: 100%;
+}
+
+.c-tbl__caption {
+	color: var(--tbl-cap-c);
+	font-size: 1.25em;
+	max-width: 100%;
+	padding: .5em 0;
+	text-align: left;
+}
+
+.c-tbl__caption em {
+	color: #666;
+	font-style: normal;
+	font-weight: 300;
+}
+
+/* <td> */
+.c-tbl td {
+	border-color: var(--tbl-td-bdc);
+	border-style: solid;
+	border-width: 1px;
+	overflow: hidden;
+	padding: var(--tbl-td-p);
+	text-align: left;
+	text-overflow: ellipsis;
+}
+
+.c-tbl td[data-event] {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.c-tbl td:focus {
+	background-color: var(--tbl-td-foc-c);
+	outline: none;
+}
+
+/* <th> */
+.c-tbl th {
+	background-color: var(--tbl-th-bgc);
+	border: 1px solid var(--tbl-th-bdc);
+	color: var(--tbl-th-c);
+	overflow: hidden;
+	padding: var(--tbl-td-p);
+	text-align: left;
+	text-overflow: ellipsis;
+	user-select: none;
+}
+
+.c-tbl th span {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	pointer-events: none;
+
+}
+.c-tbl th strong {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.c-tbl th svg {
+	height: var(--tbl-ico-w);
+	pointer-events: none;
+	width: var(--tbl-ico-w);
+}
+
+.c-tbl th:focus {
+	color: var(--tbl-th-foc-c);
+	outline: none;
+	text-decoration: underline;
+}
+
+/* Sortable */
+[aria-sort] svg path { fill: var(--tbl-th-c); }
+[aria-sort="descending"] svg path[data-descending],
+[aria-sort="ascending"] svg path[data-ascending] {
+	fill: var(--tbl-th-foc-c);
+}
+
+/* Searchable */
+.c-tbl__search-input {
+	-webkit-appearance: none;
+	border: 1px solid #CCC;
+	border-radius: 0;
+	font-size: inherit;
+	margin-inline-start: .5em;
+	padding: var(--tbl-td-p);
+}
+.c-tbl__search-label {
+	font-weight: 500;
+}
+.c-tbl__search-wrapper {
+	align-items: center;
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	display: flex;
+	justify-content: space-between;;
+	margin: var(--tbl-td-p) 0;
+	padding: 1em;
+	/* text-align: right; */
+}
+
+/* Modifiers */
+.c-tbl--bdrs {
+	border-collapse: inherit;
+	border-radius: var(--tbl-bdrs);
+	border-spacing: 0px;
+}
+.c-tbl--bdrs td,
+.c-tbl--bdrs th {
+	border-width: 1px 0 0 1px;
+}
+.c-tbl--bdrs tr td:last-of-type,
+.c-tbl--bdrs tr th:last-of-type {
+	border-right-width: 1px;
+}
+.c-tbl--bdrs tr:last-of-type td {
+	border-bottom-width: 1px;
+}
+.c-tbl--bdrs thead tr th:first-of-type {
+	border-top-left-radius: var(--tbl-bdrs);
+}
+.c-tbl--bdrs th:last-of-type {
+	border-top-right-radius: var(--tbl-bdrs);
+}
+.c-tbl--bdrs tbody tr:last-of-type td:first-of-type {
+	border-bottom-left-radius: var(--tbl-bdrs);
+}
+.c-tbl--bdrs tbody tr:last-of-type td:last-of-type {
+	border-bottom-right-radius: var(--tbl-bdrs);
+}
+.c-tbl--fixed {
+	table-layout: fixed;
+}
+.c-tbl--scroll-h {
+	width: 200%;
+}
+.c-tbl--scroll-y {
+	height: var(--tbl-scrl-h);
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.c-tbl--sticky th {
+	position: sticky;
+	top: -1px;
+}
+.c-tbl--zebra tbody tr:nth-child(odd) {
+	background: var(--tbl-zebra-c);
+}
+
+/* Column Styling: Example (change index) */
+.c-tbl col[data-index="-1"] {
+	background-color: #EEE;
+}
+
+/* TODO: PAGINATION */
+.c-pg {
+	align-items: center;
+	box-sizing: border-box;
+	display: flex;
+	font-size: .875rem;
+	justify-content: space-evenly;
+	padding: 0 0 1em 0;
+}
+.c-pg * {
+	font-size: inherit;
+}
+.c-pg button {
+	min-width: 7rem;
+}
+.c-pg input {
+	box-sizing: border-box;
+	height: 100%;
+	text-align: center;
+	width: 6ch;
+}
+.c-pg__button--next,
+.c-pg__button--prev {
+	background-color: #222;
+	border: 0;
+	color: #FFF;
+	padding: .5em;
+}
+.c-pg__button--first,
+.c-pg__button--last {
+	background-color: #EEE;
+	border: 0;
+	display: none;
+	min-width: 6rem;
+	padding: .5em;
+}
+.c-pg__wrapper {
+	align-self: stretch;
+}
+@media (min-width: 768px) {
+	.c-pg__button--first,
+	.c-pg__button--last {
+		display: block;
+	}	
+}

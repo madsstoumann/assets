@@ -1,0 +1,35 @@
+@import 'app.css';
+.app {
+	--unit: 2rem;
+}
+
+[data-elm="preview"] {
+	background-color: #8db6c1;
+	border: 1px dashed #333;
+	box-sizing: border-box;
+	min-height: 20rem;
+	box-shadow: inset 0 0 0 var(--unit) #facd9f;
+	position: relative;
+}
+[data-elm="preview"]::before {
+	background-color: #fedd9b;
+	border: 1px solid #333;
+	content: '';
+	display: block;
+	top: var(--unit);
+	left: var(--unit);
+	position: absolute;
+	width: calc(100% - (var(--unit) * 2));
+	height: calc(100% - (var(--unit) * 2));;
+}
+[data-elm="preview"]::after {
+	background-color: #c5d18c;
+	border: 1px dashed #74767e;
+	content: '';
+	display: block;
+	top: calc(var(--unit) * 2);
+	left: calc(var(--unit) * 2);
+	position: absolute;
+	width: calc(100% - (var(--unit) * 4));
+	height: calc(100% - (var(--unit) * 4));;
+}

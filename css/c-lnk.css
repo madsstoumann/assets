@@ -1,0 +1,222 @@
+/**
+ * c-lnk.css
+ * @version 1.0.40
+ * @summary 14-01-2020
+ * @author Mads Stoumann
+ * @description Stylesheet for links.
+	Variables are concatinated from: 
+	- element-prefix + 
+	- emmet-css-abbreviation + 
+	- modifier (:active, :disabled, :focus, :hover)
+	More on emmett: https://docs.emmet.io/cheat-sheet/
+*/
+@import 'config.css';
+
+.c-lnk {
+	/* Custom Properties */
+	--lnk-bdc: none;
+	--lnk-bdrs: 0;
+	--lnk-bds: none;
+	--lnk-bdw: 0;
+	--lnk-bgc: transparent;
+	--lnk-bxsh: transparent;
+	--lnk-bxsh--sz: 0 0 0 0.2rem;
+	--lnk-c: var(--c-link);
+	--lnk-cur: pointer;
+	--lnk-d: inline-flex;
+	--lnk-ff: var(--f-body, inherit);
+	--lnk-fz: inherit;
+	--lnk-fw: inherit;
+	--lnk-ol: none;
+	--lnk-pos: relative;
+	--lnk-tdc: inherit;
+	--lnk-tdl: underline;
+	--lnk-tds: solid;
+	--lnk-tt: normal;
+
+	/* Active */
+	--lnk-bdc--act: var(--c-blue-600);
+	--lnk-bgc--act: var(--c-blue-600);
+	--lnk-bxsh--act: var(--c-blue-600);
+	--lnk-c--act: var(--c-blue-50);
+
+	/* Focus */
+	--lnk-bdc--foc: var(--c-link);
+	--lnk-bgc--foc: var(--c-link);
+	--lnk-bxsh--foc: var(--c-link);
+	--lnk-c--foc: var(--c-blue-50);
+
+	/* Hover */
+	--lnk-bdc--hov: var(--c-link);
+	--lnk-bgc--hov: var(--c-link);
+	--lnk-bxsh--hov: var(--c-link);
+	--lnk-c--hov: var(--c-blue-50);
+
+	/* Visited */
+	--lnk-bdc--vis: transparent;
+	--lnk-bgc--vis: transparent;
+	--lnk-bxsh--vis: none;
+	--lnk-c--vis: var(--c-link-vis);
+
+	background-color: var(--lnk-bgc);
+	border-color: var(--lnk-bdc);
+	border-radius: var(--lnk-bdrs);
+	border-style: var(--lnk-bds);
+	border-width: var(--lnk-bdw);
+	box-shadow: var(--lnk-bxsh--sz) var(--lnk-bxsh);
+	color: var(--lnk-c);
+	cursor: var(--lnk-cur);
+	display: var(--lnk-d);
+	font-family: var(--lnk-ff);
+	font-size: var(--lnk-fz);
+	font-weight: var(--lnk-fw);
+	outline: var(--lnk-ol);
+	position: var(--lnk-pos);
+	text-decoration-color: var(--lnk-tdc);
+	text-decoration-line: var(--lnk-tdl);
+	text-decoration-style: var(--lnk-tds);
+	text-transform: var(--lnk-tt);
+}
+
+.c-lnk:active,
+.c-lnk--active {
+	background-color: var(--lnk-bgc--act);
+	border-color: var(--lnk-bdc--act);
+	box-shadow: var(--lnk-bxsh--sz) var(--lnk-bxsh--act);
+	color: var(--lnk-c--act);
+}
+.c-lnk:active:hover,
+.c-lnk--active:hover {
+	--lnk-bxsh--hov: var(--lnk-bxsh--sz) var(--lnk-bxsh--act);
+}
+.c-lnk:focus,
+.c-lnk--focus,
+.c-lnk:visited:focus {
+	background-color: var(--lnk-bgc--foc);
+	border-color: var(--lnk-bdc--foc);
+	box-shadow: var(--lnk-bxsh--sz) var(--lnk-bxsh--foc);
+	color: var(--lnk-c--foc);
+}
+.c-lnk:visited,
+.c-lnk--visited {
+	background-color: var(--lnk-bgc--vis);
+	border-color: var(--lnk-bdc--vis);
+	box-shadow: var(--lnk-bxsh--sz) var(--lnk-bxsh--vis);
+	color: var(--lnk-c--vis);
+}
+.c-lnk[hidden] {
+	display: none;
+}
+
+@media (hover: hover) {
+	.c-lnk:focus:hover,
+	.c-lnk--focus:hover {
+		--lnk-bxsh--hov: var(--lnk-bxsh--foc);
+	}
+	.c-lnk:hover,
+	.c-lnk--hover {
+		background-color: var(--lnk-bgc--hov);
+		border-color: var(--lnk-bdc--hov);
+		box-shadow: var(--lnk-bxsh--sz) var(--lnk-bxsh--hov);
+		color: var(--lnk-c--hov);
+	}
+}
+
+/* Modifiers */
+/* Invalid: red, wavy line below */
+.c-lnk--err {
+	--lnk-bgc--act: var(--c-red-700);
+	--lnk-bgc--foc: var(--c-red-700);
+	--lnk-bgc--hov: var(--c-red-700);
+	--lnk-bxsh--foc: none;
+	--lnk-bxsh--hov: none;
+	--lnk-c: var(--c-red-700);
+	--lnk-c--act: var(--c-red-50);
+	--lnk-c--foc: var(--c-red-50);
+	--lnk-c--hov: var(--c-red-50);
+	--lnk-tdc: var(--c-red-700);
+	--lnk-tds: wavy;
+}
+
+/* Automatic icons based on `href`, requires `.c-ico-maa`, `.c-ico-mab`, `.c-ico-bga` or `.c-ico-bgb` */
+.c-lnk[href*="//"] { --ico-bgi: var(--i-external); }
+.c-lnk[download] { --ico-bgi: var(--i-download); }
+.c-lnk[href^="mailto"] { --ico-bgi: var(--i-mail); }
+.c-lnk[href^="skype"] { --ico-bgi: var(--i-skype); }
+.c-lnk[href^="sms"] { --ico-bgi: var(--i-sms); }
+.c-lnk[href^="tel"] { --ico-bgi: var(--i-phone); }
+
+/* Design Pattern: Link with icon ::after or ::before */
+.c-lnk[class*="c-ico-"]::after {
+	--ico-pis: .25rem;
+}
+.c-lnk[class*="c-ico-"]::before {
+	--ico-pie: .25rem;
+}
+
+/* Design Pattern: Link with ToolTip */
+.c-lnk.c-ttp__wrapper {
+	--lnk-cur: help;
+	--lnk-tds: dotted;
+}
+.c-lnk .c-ttp {
+	left: 0;
+}
+
+/* Design Pattern: Link with ToggleTip, Arrow after `<summary>` */
+.c-lnk.c-tgt__summary {
+	--lnk-bgc--act: var(--c-pink-500);
+	--lnk-bgc--foc: var(--c-pink-500);
+	--lnk-bgc--hov: var(--c-pink-500);
+	--lnk-bxsh--foc: none;
+	--lnk-bxsh--hov: none;
+	--lnk-c--act: var(--c-pink-50);
+	--lnk-c--foc: var(--c-pink-50);
+	--lnk-c--hov: var(--c-pink-50);
+	--lnk-c: var(--c-pink-500);
+	--lnk-cur: help;
+	--lnk-tds: dotted;
+}
+.c-lnk .c-tgt__summary-header {
+	/* These cannot be inherited due to a browser bug, need child-element `c-tgt__summary-header` */
+	text-decoration-color: var(--lnk-tdc);
+	text-decoration-line: var(--lnk-tdl);
+	text-decoration-style: var(--lnk-tds);
+}
+.c-tgt .c-ico-maa::after { /* Arrow after `<summary>`, requires `.c-ico-maa` */
+	--ico-bgi: var(--i-arr_dwn);
+	--ico-h: 0.75em;
+	--ico-w: 0.75em;
+}
+.c-tgt[open] .c-ico-maa::after { /* Flip arrow, when [open] */
+	--ico-trf: scaleY(-1);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+	.c-lnk {
+		--lnk-bgc--act: var(--c-link--dark);
+		--lnk-bgc--foc: var(--c-link--dark);
+		--lnk-bgc--hov: var(--c-link--dark);
+		--lnk-bxsh--foc: var(--c-link--dark);
+		--lnk-bxsh--hov: var(--c-link--dark);
+		--lnk-c--act: var(--c-txt);
+		--lnk-c--foc: var(--c-txt);
+		--lnk-c--hov: var(--c-txt);
+		--lnk-c--vis: var(--c-link-vis--dark);
+		--lnk-c: var(--c-link--dark);
+	}
+	/* Modiffiers */
+	.c-lnk--err {
+		--lnk-bgc--act: var(--c-red-300);
+		--lnk-bgc--foc: var(--c-red-300);
+		--lnk-bgc--hov: var(--c-red-300);
+		--lnk-bxsh--foc: none;
+		--lnk-bxsh--hov: none;
+		--lnk-c: var(--c-red-300);
+		--lnk-tdc: var(--c-red-300);
+	}
+	.c-lnk.c-tgt__summary {
+		--lnk-c: var(--c-pink-200);
+	}
+}

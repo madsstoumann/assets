@@ -1,0 +1,206 @@
+@import 'app.css';
+@import 'c-rng.css';
+
+.app {
+	--alpha: 1;
+  --hue: 0;
+  --saturation: 100%;
+	--lightness: 50%;
+	/* Primary / Complimentary */
+	--cp-prm: hsla(var(--hue), var(--saturation), var(--lightness), var(--alpha));
+	--cp-com: hsla(calc(var(--hue) + 180), var(--saturation), var(--lightness), var(--alpha));
+	
+	/* Analogous */
+	--cp-an1: hsla(calc(var(--hue) + 30), var(--saturation), var(--lightness), var(--alpha));
+	--cp-an2: hsla(calc(var(--hue) - 30), var(--saturation), var(--lightness), var(--alpha));
+	
+	/* Rect / Square */
+	--cp-rc1: hsla(calc(var(--hue) + 60), var(--saturation), var(--lightness), var(--alpha));
+	--cp-sq1: hsla(calc(var(--hue) + 90), var(--saturation), var(--lightness), var(--alpha));
+	--cp-sq2: hsla(calc(var(--hue) + 270), var(--saturation), var(--lightness), var(--alpha));
+	
+	/* Split complimentary */
+	--cp-sc1: hsla(calc(var(--hue) + 150), var(--saturation), var(--lightness), var(--alpha));
+	--cp-sc2: hsla(calc(var(--hue) + 210), var(--saturation), var(--lightness), var(--alpha));
+
+	/* Triad */
+	--cp-tr1: hsla(calc(var(--hue) + 120), var(--saturation), var(--lightness), var(--alpha));
+	--cp-tr2: hsla(calc(var(--hue) - 120), var(--saturation), var(--lightness), var(--alpha));
+
+	/* Shades */
+	--cp-sh1: hsla(var(--hue), var(--saturation), calc(var(--lightness) - ((100% - var(--lightness)) / 10) * 1), var(--alpha));
+	--cp-sh2: hsla(var(--hue), var(--saturation), calc(var(--lightness) - ((100% - var(--lightness)) / 10) * 2), var(--alpha));
+	--cp-sh3: hsla(var(--hue), var(--saturation), calc(var(--lightness) - ((100% - var(--lightness)) / 10) * 3), var(--alpha));
+	--cp-sh4: hsla(var(--hue), var(--saturation), calc(var(--lightness) - ((100% - var(--lightness)) / 10) * 4), var(--alpha));
+	--cp-sh5: hsla(var(--hue), var(--saturation), calc(var(--lightness) - ((100% - var(--lightness)) / 10) * 5), var(--alpha));
+	--cp-sh6: hsla(var(--hue), var(--saturation), calc(var(--lightness) - ((100% - var(--lightness)) / 10) * 6), var(--alpha));
+	--cp-sh7: hsla(var(--hue), var(--saturation), calc(var(--lightness) - ((100% - var(--lightness)) / 10) * 7), var(--alpha));
+	--cp-sh8: hsla(var(--hue), var(--saturation), calc(var(--lightness) - ((100% - var(--lightness)) / 10) * 8), var(--alpha));
+	--cp-sh9: hsla(var(--hue), var(--saturation), calc(var(--lightness) - ((100% - var(--lightness)) / 10) * 9), var(--alpha));
+
+	/* Tints */
+	--cp-tn1: hsla(var(--hue), var(--saturation), calc(var(--lightness) + ((100% - var(--lightness)) / 10) * 1), var(--alpha));
+	--cp-tn2: hsla(var(--hue), var(--saturation), calc(var(--lightness) + ((100% - var(--lightness)) / 10) * 2), var(--alpha));
+	--cp-tn3: hsla(var(--hue), var(--saturation), calc(var(--lightness) + ((100% - var(--lightness)) / 10) * 3), var(--alpha));
+	--cp-tn4: hsla(var(--hue), var(--saturation), calc(var(--lightness) + ((100% - var(--lightness)) / 10) * 4), var(--alpha));
+	--cp-tn5: hsla(var(--hue), var(--saturation), calc(var(--lightness) + ((100% - var(--lightness)) / 10) * 5), var(--alpha));
+	--cp-tn6: hsla(var(--hue), var(--saturation), calc(var(--lightness) + ((100% - var(--lightness)) / 10) * 6), var(--alpha));
+	--cp-tn7: hsla(var(--hue), var(--saturation), calc(var(--lightness) + ((100% - var(--lightness)) / 10) * 7), var(--alpha));
+	--cp-tn8: hsla(var(--hue), var(--saturation), calc(var(--lightness) + ((100% - var(--lightness)) / 10) * 8), var(--alpha));
+	--cp-tn9: hsla(var(--hue), var(--saturation), calc(var(--lightness) + ((100% - var(--lightness)) / 10) * 9), var(--alpha));
+
+	--cp-ico-copy: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M18.984 21v-14.016h-10.969v14.016h10.969zM18.984 5.016q0.797 0 1.406 0.586t0.609 1.383v14.016q0 0.797-0.609 1.406t-1.406 0.609h-10.969q-0.797 0-1.406-0.609t-0.609-1.406v-14.016q0-0.797 0.609-1.383t1.406-0.586h10.969zM15.984 0.984v2.016h-12v14.016h-1.969v-14.016q0-0.797 0.586-1.406t1.383-0.609h12z"></path></svg>');
+	--cp-ico-w: 2rem;
+}
+.app .c-rng {
+	--rng-h: 0.75rem;
+	--rng-thumb-h: 2rem;
+	--rng-thumb-w: 2rem;
+	--rng-thumb-bxsh--focus: inset 0 0 0 0.125rem rgba(255, 255, 255, 0.8), 0 0 0 0.125rem hsl(var(--hue), 100%, 25%);
+	--rng-m: 1rem 0;
+	--rng-thumb-bxsh: inset 0 0 0 0.125rem hsl(var(--hue), 100%, 30%);
+}
+.app__color-group {
+	border: 0;
+	flex: 0 0 100%;
+	padding: 0.5rem 0;
+}
+.app__color-group-headline {
+	font-weight: 700;
+}
+.app__label--color {
+	border-radius: .25rem;
+	flex: 0 0 4rem;
+}
+.app__label--range {
+	display: block;
+	margin: 1rem 0;
+}
+.app__preset--color {
+	border: 1px solid #EEE;
+	border-radius: 50%;
+	display: inline-block;
+	height: 2.5rem;
+	margin: 0 0.125rem;
+	position: relative;
+	width: 2.5rem;
+}
+.app__preset--color:focus {
+	box-shadow: var(--cp-col-bxsh--focus);
+	outline: none;
+}
+.app__preset--color::after {
+	background-color: #636061;
+	color: #efefef;
+	content: attr(title);
+	display: block;
+	font-size: x-small;
+	left: 0;
+	min-width: 100%;
+	opacity: 0;
+	padding: .25rem;
+	position: absolute;
+	top: -1.25rem;
+	white-space: nowrap;
+	z-index: 1;
+}
+.app__preset--color:hover::after {
+	opacity: 1;
+}
+
+/* DATA-ELEMENTS: Interface Order */
+[data-elm="selected"] {
+	background-color: hsla(var(--hue), var(--saturation), var(--lightness), var(--alpha));
+	height: 5.5rem;
+	margin-bottom: 1rem;
+	position: relative;
+}
+[data-elm="gradient"]:focus::after,
+[data-elm="gradient"]:hover::after,
+[data-elm="selected"]:focus,
+[data-elm="selected"]:hover {
+	background-image: var(--cp-ico-copy);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: var(--cp-ico-w);
+	content: "";
+}
+[data-elm="gradientStopDelete"] {
+	background-color: crimson;
+	color: white;
+}
+[data-elm="gradientType"] {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background-image: url('data:image/svg+xml,\ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\ <text y=".9em" font-size="100">⭥</text>\ </svg>');
+    background-position: right center;
+    background-size: 1em;
+    background-repeat: no-repeat no-repeat;
+}
+[data-elm="hue"].c-rng {
+	--rng-bgi: linear-gradient(to right, red, #ff8000, #ff0, #80ff00, lime, #00ff80, cyan, #007fff, blue, #7f00ff, #f0f, #ff0080, red);
+	--rng-thumb-bgc: hsl(var(--hue), 100%, 50%);
+}
+[data-elm="saturation"].c-rng {
+	--rng-bgi: linear-gradient(to right, #808080, hsl(var(--hue), 100%, 50%));
+	--rng-thumb-bgc: hsl(var(--hue), var(--saturation), 50%, 1);
+}
+[data-elm="lightness"].c-rng {
+	--rng-bgi: linear-gradient(to right, #000, hsl(var(--hue), 100%, 50%), #FFF);
+	--rng-thumb-bgc: hsl(var(--hue), 100%, var(--lightness), 1);
+}
+[data-elm="alpha"].c-rng {
+	--rng-bgi: linear-gradient(to right, transparent, hsl(var(--hue), var(--saturation), var(--lightness))), url('data:image/svg+xml;utf8,<svg preserveAspectRatio="none" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="5" height="5" fill="grey" /><rect x="5" y="5" width="5" height="5" fill="grey" /><rect x="5" y="0" width="5" height="5" fill="white" /><rect x="0" y="5" width="5" height="5" fill="white" /></svg>');
+	--rng-m: 1rem 0 2rem 0;
+	--rng-thumb-bgc: hsl(var(--hue), var(--saturation), var(--lightness), var(--alpha));
+	background-position: 0 0;	
+	background-size: cover, 0.75rem 0.75rem;
+}
+[data-elm="gradient"] {
+	background-color: lightgray;
+	border-radius: 50%;
+	margin-top: calc(var(--cp-m-unit) / 2);
+	position: relative;
+	width: 100%;
+}
+[data-elm="gradient"]::after {
+	content: '';
+	display: block;
+	padding-bottom: 100%; 
+}
+[data-elm="add"],
+[data-elm="addStop"] {
+	background: rgb(238,238,238);
+	border: 1px solid #CCC;
+	border-radius: 0.25rem;
+	margin-top: calc(var(--cp-m-unit) / 2);
+	padding: 0.35rem;
+	width: 100%;
+}
+[data-elm="addStop"] { margin: 0.75rem 0; }
+[data-elm="colors"] { border-top: 1px solid #DDD; }
+[data-elm="gradientColor"] {
+	border: 0;
+	height: 100%;
+	width: 100%;
+
+}
+/* STATE */
+[data-state="gradient"],
+[data-state="solid"] {
+	display: none;
+	flex-wrap: wrap;
+}
+[data-elm="colorGradient"]:checked ~ [data-state="gradient"],
+[data-elm="colorSolid"]:checked ~ [data-state="solid"] {
+	display: flex;
+}
+[data-elm="colorGradient"]:checked ~ .app__fieldset [data-for="colorGradient"],
+[data-elm="colorSolid"]:checked ~ .app__fieldset [data-for="colorSolid"] {
+	background-color: #606060;
+	color: white;
+}
+[data-elm="colorGradient"]:focus ~ .app__fieldset [data-for="colorGradient"],
+[data-elm="colorSolid"]:focus ~ .app__fieldset [data-for="colorSolid"] {
+	text-decoration: underline;
+}

@@ -1,0 +1,8 @@
+@import 'app.css';
+@import 'c-img.css';
+
+[data-elm="preview"] {
+	border: 2px dashed #DDD;
+	height: 200px;
+	position: relative;
+}

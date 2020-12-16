@@ -1,0 +1,110 @@
+/**
+ * c-dlg.css
+ * @version 1.0.50
+ * @summary 14-01-2020
+ * @author Mads Stoumann
+ * @description Stylesheet for Dialogs
+	Variables are concatinated from: 
+	- element-prefix + 
+	- optional sub-element +
+	- emmet-css-abbreviation + 
+	- modifier (:active, :disabled, :focus, :hover)
+	More on emmett: https://docs.emmet.io/cheat-sheet/
+*/
+@import 'config.css';
+
+.c-dialog {
+	--dlg-backdrop: rgba(0, 0, 0, 0.5);
+	--dlg-bdc: transparent;
+	--dlg-bdc--dark: #FFF;
+	--dlg-bdrs: var(--u-150);
+	--dlg-bds: solid;
+	--dlg-bdw: 0px;
+	--dlg-bdw--dark: 1px;
+	--dlg-bgc: #FFF;
+	--dlg-bgc--dark: #202123;
+	--dlg-bxsh: rgba(0, 0, 0, 0.2);
+	--dlg-bxsh--sz: 0 20px 40px;
+	--dlg-c: var(--c-txt);
+	--dlg-c--dark: var(--c-txt--dark);
+	--dlg-close-m: var(--u-200);
+	--dlg-ff: var(--f-body, sans-serif);
+	--dlg-fz: var(--f-fz-500, 1rem);
+	--dlg-mw: 25rem;
+	--dlg-nav-mil: var(--u-300);
+	--dlg-nav-m: var(--u-400) 0 0 0; 
+	--dlg-p: var(--u-400);
+	--dlg-w: calc(100vw - 1rem);
+
+	background-color: var(--dlg-bgc);
+	border-color: var(--dlg-bdc);
+	border-radius: var(--dlg-bdrs);
+	border-style: var(--dlg-bds);
+	border-width: var(--dlg-bdw);
+	box-shadow: var(--dlg-bxsh--sz) var(--dlg-bxsh);
+	box-sizing: border-box;
+	color: var(--dlg-c);
+	font-family: var(--dlg-ff);
+	font-size: var(--dlg-fz);
+	padding: var(--dlg-p);
+	position: relative;
+	max-width: var(--dlg-mw);
+	width: var(--dlg-w);
+}
+.c-dialog::backdrop {
+	/* Chrome Bug: Cannot be set from CSS Custom Prop: --dlg-backdrop :-( */
+	background: rgba(0, 0, 0, 0.5);
+}
+.c-dialog__close {
+	inset-inline-end: var(--dlg-close-m);
+	position: absolute;
+	top: var(--dlg-close-m);
+}
+.c-dialog__nav {
+	margin: var(--dlg-nav-m);
+	text-align: end;
+}
+.c-dialog__nav button:first-of-type {
+	margin-inline-end: var(--dlg-nav-mil);
+}
+.c-dialog--nosupport {
+	box-shadow: 0 0 0 9999px var(--dlg-backdrop);
+	display: block;
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translateX(-50%);
+}
+.c-dialog--nosupport[hidden] {
+	display: none;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+	.c-dialog {
+		--dlg-bdc: var(--dlg-bdc--dark);
+		--dlg-bdw: var(--dlg-bdw--dark);
+		--dlg-bgc: var(--dlg-bgc--dark);
+		--dlg-c: var(--dlg-c--dark);
+	}
+}
+
+/* Fix for Edge: Delete when moved to Chromium */
+@supports not (inset-inline-end: 0) {
+	.c-dialog__close {
+		right: var(--dlg-close-m);
+	}
+	.c-dialog__nav {
+		text-align: right;
+	}
+	.c-dialog__nav button:first-of-type {
+		margin-right: var(--dlg-nav-mil);
+	}
+}
+/* Fix for Firefox: Delete when Dialog implemented fully */
+@supports (-moz-appearance: meterbar) {
+	.c-dialog {
+		left: 0;
+		transform: translateY(-50%);
+	}
+}

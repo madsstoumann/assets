@@ -1,0 +1,32 @@
+/**
+ * c-img.css
+ * @version 1.0.00
+ * @summary 21-05-2020
+ * @author Mads Stoumann
+ * @description Stylesheet for images
+	Variables are concatinated from: 
+	- element-prefix + 
+	- optional sub-element +
+	- emmet-css-abbreviation + 
+	- modifier (:active, :disabled, :focus, :hover)
+	More on emmett: https://docs.emmet.io/cheat-sheet/
+*/
+.c-img {
+	--w: 16;
+	--h: 9;
+	display: block;
+	position: relative;
+}
+.c-img[style]::before {
+	content: '';
+	display: block;
+	padding-bottom: calc(var(--h) / var(--w) * 100%);
+}
+.c-img[style] img {
+	height: 100%;
+	left: 0;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}

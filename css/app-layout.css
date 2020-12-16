@@ -1,0 +1,17 @@
+@import 'app.css';
+.app__fieldset {
+  background-color: #EEE;
+  border-bottom: 1px solid #CCC;
+  margin-bottom: 0.em;
+  padding: 0 1em;
+}
+.app__label--checkline {
+  align-items: center;
+  color: var(--app-lbl-c);
+  display: flex;
+  flex: 1;
+  font-size: var(--app-fz-small);
+}
+.app__label--checkline input {
+  margin-right: 0.5rem;
+}

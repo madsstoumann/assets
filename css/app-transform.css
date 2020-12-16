@@ -1,0 +1,57 @@
+@import 'app.css';
+@import 'c-rng.css';
+.app {
+	--scale: 1;
+	--rotate: 0;
+	--translateX: 0;
+	--translateY: 0;
+	--skewX: 0;
+	--skewY: 0;
+}
+
+.app__preview {
+	align-items: center;
+	background-color: #f7fafc;
+	border: 3px dashed #cbd5e0;
+	border-radius: .25rem;
+	display: flex;
+	justify-content: center;
+}
+
+.app__preview-inner {
+	align-items: center;
+	background: cornflowerblue;
+	color: white;
+	display: flex;
+	height: 200px;
+	justify-content: center;
+	position: relative;
+	transform: rotate(var(--rotate)) scale(var(--scale)) translate(var(--translateX), var(--translateY)) skew(var(--skewX), var(--skewY));
+	width: 200px;
+}
+
+.app__preview-inner::after,
+.app__preview-inner::before {
+	content: '';
+	display: block;
+	height: 2rem;
+	line-height: 2rem;
+	position: absolute;
+	text-align: center;
+	width: 2rem;
+	
+}
+
+.app__preview-inner::after {
+	background-color: orange;
+	bottom: 0;
+	content: '\25BC';
+	right: 0;
+}
+
+.app__preview-inner::before {
+	background-color: tomato;
+	content: '\25B2';
+	left: 0;
+	top: 0;
+}

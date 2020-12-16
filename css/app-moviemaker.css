@@ -1,0 +1,28 @@
+@import 'app.css';
+
+.app__frame {
+	background-color: #333;
+	border: 1px solid #333;
+	color: #FFF;
+	height: 4rem;
+	margin: 0.5rem 0.25rem 0.5rem;
+	position: relative;
+	width: 4rem;
+}
+.app__frame img {
+	object-fit: cover;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.app__frame * {
+	pointer-events: none;
+}
+.app__panel--frames {
+	border-color: #999;
+	border-style: dashed;
+	border-width: 2px 0;
+	display: flex;
+}

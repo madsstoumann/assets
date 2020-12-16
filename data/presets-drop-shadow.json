@@ -1,0 +1,31 @@
+{
+  "key": "drop-shadow",
+  "values": [
+		{
+			"name": "stack",
+			"deletable": false,
+			"value": "drop-shadow(16px 16px 0px rgba(110, 110, 110, 1)) drop-shadow(16px 16px 0px rgba(145, 145, 145, 1)) drop-shadow(16px 16px 0px rgba(205, 205, 205, 1))",
+			"values":
+			[
+				{
+					"blur": 0,
+					"color": "rgba(110, 110, 110, 1)",
+					"x": 16,
+					"y": 16
+				},
+				{
+					"blur": 0,
+					"color": "rgba(145, 145, 145, 1)",
+					"x": 16,
+					"y": 16
+				},
+				{
+					"blur": 0,
+					"color": "rgba(205, 205, 205, 1)",
+					"x": 16,
+					"y": 16
+				}
+			]
+		}
+	]
+}

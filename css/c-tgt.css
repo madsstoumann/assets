@@ -1,0 +1,118 @@
+/**
+ * c-tgt.css
+ * @version 1.0.30
+ * @summary 03-01-2020
+ * @author Mads Stoumann
+ * @description Stylesheet for ToggleTips. Similar to ToolTips, but activated by toggle: Click/Enter or Space.
+	Variables are concatinated from:
+	- element-prefix + 
+	- emmet-css-abbreviation + 
+	- modifier (:active, :disabled, :focus, :hover)
+	More on emmett: https://docs.emmet.io/cheat-sheet/
+*/
+@import 'config.css';
+
+.c-tgt {
+	--tgt-bdc: var(--c-grey-400);
+	--tgt-bdrs: var(--u-150);
+	--tgt-bdw: var(--u-125);
+	--tgt-bgc: var(--c-grey-700);
+  --tgt-c: var(--c-grey-100);
+  --tgt-cur: help;
+  --tgt-bgc: var(--c-grey-700);
+	--tgt-fz: var(--u-275);
+	--tgt-head-fw: 700;
+	--tgt-m: 0;
+	--tgt-off: var(--u-200);
+  --tgt-p: var(--u-300);
+  --tgt-tdc: inherit;
+	--tgt-tdl: underline;
+	--tgt-tds: dotted;
+	--tgt-tri-sz: var(--u-200); /* Triangle Size */
+	--tgt-us: none;
+	--tgt-w: 15rem;
+	--tgt-z: var(--z-c-ttp); /* Use same stacking as ToolTip */
+
+  display: inline-block;
+	position: relative;
+	user-select: var(--tgt-us);
+}
+.c-tgt__dialog {
+  background-color: var(--tgt-bgc);
+	border: var(--tgt-bdw) solid var(--tgt-bdc);
+	border-radius: var(--tgt-bdrs);
+	box-sizing: border-box;
+	color: var(--tgt-c);
+	font-family: inherit;
+	font-size: var(--tgt-fz);
+	margin: var(--tgt-m);
+	padding: var(--tgt-p);
+	position: absolute;
+	top: calc(100% + var(--tgt-off) + var(--tgt-tri-sz));
+	width: var(--tgt-w);
+	z-index: var(--tgt-z);
+}
+.c-tgt__dialog::after,
+.c-tgt__dialog::before {
+	background-color: inherit;
+	border: inherit;
+	border-radius: 0 0 0 var(--tgt-bdrs);
+	clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+	content: "";
+	height: calc(var(--tgt-tri-sz) * 2);
+	left: calc(50% - var(--tgt-tri-sz));
+	position: absolute;
+	width: calc(var(--tgt-tri-sz) * 2);
+	z-index: -1;
+ }
+.c-tgt__dialog::after {
+	bottom: calc(0px - (var(--tgt-tri-sz) + var(--tgt-bdw)));
+	display: none;
+	transform: rotate(-45deg);
+}
+.c-tgt__dialog::before {
+	display: block;
+	left: calc(50% - var(--tgt-tri-sz));
+	top: calc(0px - (var(--tgt-tri-sz) + var(--tgt-bdw)));
+	transform: rotate(135deg);
+}
+.c-tgt__dialog-close {
+	--btn-c: var(--tgt-c);
+	--btn-fl: right;
+	--btn-p-tb: 2px;
+}
+.c-tgt__dialog-headline {
+	font-weight: var(--tgt-head-fw);
+}
+ .c-tgt__dialog * {
+	 margin: inherit;
+}
+.c-tgt__summary {
+	display: inline-flex;
+	list-style: none;
+}
+.c-tgt__summary::-webkit-details-marker {
+	display: none;
+}
+
+/* Fix: Safari, border on clip-path, stacking order */
+@media not all and (min-resolution:.001dpcm) { 
+	@media {
+		.c-tgt { 
+			--tgt-bdc: transparent;
+		}
+		/* Safari Fix, pseudo-element break to new line */
+		/* TODO */
+		.c-tgt__summary {
+			display: inline-block;
+		}
+	}
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+	.c-tgt {
+		--tgt-bgc: var(--c-grey-200);
+		--tgt-c: var(--c-txt);
+	}
+}

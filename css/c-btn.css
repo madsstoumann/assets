@@ -1,0 +1,296 @@
+/**
+ * c-btn.css
+ * @version 1.0.20
+ * @summary 03-01-2020
+ * @author Mads Stoumann
+ * @description Stylesheet for buttons.
+	Variables are concatinated from: 
+	- element-prefix + 
+	- optional subelement +
+	- emmet-css-abbreviation + 
+	- modifier (:active, :disabled, :focus, :hover)
+	More on emmett: https://docs.emmet.io/cheat-sheet/
+*/
+@import 'config.css';
+
+.c-btn {
+	/* Custom Properties */
+	--btn-ai: center;
+	--btn-bdc: var(--c-blue-600);
+	--btn-bdw: var(--u-125, 2px);
+	--btn-bdrs: var(--u-175, 0.375rem);
+	--btn-bgc: var(--c-blue-600);
+	--btn-bxsh: transparent;
+	--btn-bxsh--sz: 0 0 0 0.2rem;
+	--btn-c: var(--c-blue-50);
+	--btn-cur: pointer;
+	--btn-ff: var(--f-body, sans-serif);
+	--btn-fl: none;
+	--btn-fz: var(--u-300, 1.25rem);
+	--btn-fw: 400;
+	--btn-ico-mis: var(--u-175);
+	--btn-lh: 1;
+	--btn-ol: none;
+	--btn-p-lr: var(--u-500, 2rem);
+	--btn-p-tb: var(--u-275, 0.875rem);
+	--btn-trsdu: var(--a-tm-200);
+	--btn-trstf: ease-in-out; 
+	--btn-w: auto;
+
+	/* Active */
+	--btn-bdc--act: var(--c-blue-600);
+	--btn-bgc--act: var(--c-blue-600);
+	--btn-bxsh--act: var(--btn-bxsh--sz) var(--c-blue-400);
+	--btn-c--act: var(--c-blue-50);
+
+	/* Disabled */
+	--btn-bdc--dis: var(--c-grey-100);
+	--btn-bgc--dis: var(--c-grey-100);
+	--btn-bxsh--dis: none;
+	--btn-c--dis: var(--c-grey-300);
+
+	/* Focus */
+	--btn-bdc--foc: var(--c-blue-600);
+	--btn-bgc--foc: var(--c-blue-600);
+	--btn-bxsh--foc: var(--btn-bxsh--sz) var(--c-blue-400);
+	--btn-c--foc: var(--c-blue-50);
+
+	/* Hover */
+	--btn-bdc--hov: transparent;
+	--btn-bgc--hov: var(--c-blue-800);
+	--btn-bxsh--hov: none;
+	--btn-c--hov: var(--c-blue-50);
+
+	align-items: var(--btn-ai);
+	background-color: var(--btn-bgc);
+	border-color: var(--btn-bdc);
+	border-radius: var(--btn-bdrs);
+	border-style: solid;
+	border-width: var(--btn-bdw);
+	box-shadow: var(--btn-bxsh--sz) var(--btn-bxsh);
+	box-sizing: border-box;
+	color: var(--btn-c);
+	cursor: var(--btn-cur);
+	display: inline-flex;
+	float: var(--btn-fl);
+	font-family: var(--btn-ff);
+	font-size: var(--btn-fz);
+	font-weight: var(--btn-fw);
+	justify-content: center;
+	line-height: var(--btn-lh);
+	outline: var(--btn-ol);
+	padding: var(--btn-p-tb) var(--btn-p-lr);
+	position: relative;
+	transition: all var(--btn-trsdu) var(--btn-trstf);
+	width: var(--btn-w);
+}
+
+/* State */
+.c-btn:active,
+.c-btn--active {
+	background-color: var(--btn-bgc--act);
+	border-color: var(--btn-bdc--act);
+	box-shadow: var(--btn-bxsh--act);
+	color: var(--btn-c--act);
+}
+.c-btn:active:hover,
+.c-btn--active:hover {
+	--btn-bxsh--hov: var(--btn-bxsh--act);
+}
+.c-btn:disabled,
+.c-btn--disabled {
+	--btn-cur: not-allowed;
+	background-color: var(--btn-bgc--dis);
+	border-color: var(--btn-bdc--dis);
+	box-shadow: var(--btn-bxsh--dis);
+	color: var(--btn-c--dis);
+	
+}
+.c-btn:focus,
+.c-btn--focus {
+	background-color: var(--btn-bgc--foc);
+	border-color: var(--btn-bdc--foc);
+	box-shadow: var(--btn-bxsh--foc);
+	color: var(--btn-c--foc);
+}
+.c-btn[hidden] {
+	display: none;
+}
+
+@media (hover: hover) {
+	.c-btn:focus:hover,
+	.c-btn--focus:hover {
+		--btn-bxsh--hov: var(--btn-bxsh--foc);
+	}
+	.c-btn:not(:disabled):hover,
+	.c-btn--hover {
+		background-color: var(--btn-bgc--hov);
+		border-color: var(--btn-bdc--hov);
+		box-shadow: var(--btn-bxsh--hov);
+		color: var(--btn-c--hov);
+	}
+}
+
+/* Modifers: Color Variants */
+.c-btn--green {
+	--btn-bdc: var(--c-green-500);
+	--btn-bdc--act: var(--c-green-500);
+	--btn-bdc--foc: var(--c-green-500);
+	--btn-bgc: var(--c-green-500);
+	--btn-bgc--act: var(--c-green-500);
+	--btn-bgc--foc: var(--c-green-500);
+	--btn-bgc--hov: var(--c-green-800);
+	--btn-bxsh--act: var(--btn-bxsh--sz) var(--c-green-300);
+	--btn-bxsh--foc: var(--btn-bxsh--sz) var(--c-green-300);
+	--btn-c: var(--c-green-50);
+	--btn-c--hov: var(--c-green-50);
+}
+.c-btn--grey {
+	--btn-bdc: var(--c-grey-500);
+	--btn-bdc--act: var(--c-grey-500);
+	--btn-bdc--foc: var(--c-grey-500);
+	--btn-bgc: var(--c-grey-500);
+	--btn-bgc--act: var(--c-grey-500);
+	--btn-bgc--foc: var(--c-grey-500);
+	--btn-bgc--hov: var(--c-grey-800);
+	--btn-bxsh--act: var(--btn-bxsh--sz) var(--c-grey-300);
+	--btn-bxsh--foc: var(--btn-bxsh--sz) var(--c-grey-300);
+	--btn-c: var(--c-grey-50);
+	--btn-c--hov: var(--c-grey-50);
+}
+.c-btn--red {
+	--btn-bdc: var(--c-red-500);
+	--btn-bdc--act: var(--c-red-500);
+	--btn-bdc--foc: var(--c-red-500);
+	--btn-bgc: var(--c-red-500);
+	--btn-bgc--act: var(--c-red-500);
+	--btn-bgc--foc: var(--c-red-500);
+	--btn-bgc--hov: var(--c-red-700);
+	--btn-bxsh--act: var(--btn-bxsh--sz) var(--c-red-300);
+	--btn-bxsh--foc: var(--btn-bxsh--sz) var(--c-red-300);
+	--btn-c: var(--c-red-50);
+	--btn-c--hov: var(--c-red-50);
+}
+
+/* Modifiers: Style */
+.c-btn--circle,
+.c-btn--square {
+	--btn-bdrs: 0;
+	--btn-p-lr: var(--btn-p-tb);
+	--btn-w: calc(var(--btn-fz) + (var(--btn-p-tb) * 2) + (var(--btn-bdw) * 2));
+}
+.c-btn--circle {
+	--btn-bdrs: 50%;
+}
+.c-btn--link {
+	--btn-bdc: transparent;
+	--btn-bdc--act: var(--c-grey-100);
+	--btn-bdc--foc: var(--c-grey-100);
+	--btn-bgc: transparent;
+	--btn-bgc--act: transparent;
+	--btn-bgc--dis: transparent;
+	--btn-bgc--foc: transparent;
+	--btn-bgc--hov: transparent;
+	--btn-bxsh--act: none;
+	--btn-bxsh--foc: none;
+	--btn-c: var(--c-link);
+	--btn-c--act: var(--c-link);
+	--btn-c--foc: var(--c-link);
+	--btn-c--hov: var(--c-link);
+	cursor: pointer;
+}
+.c-btn--link:not(:disabled):hover {
+	text-decoration: underline;
+}
+.c-btn--link:active:hover,
+.c-btn--link.c-btn--active:hover {
+	--btn-bdc--hov: var(--btn-bdc--act);
+}
+.c-btn--link:focus:hover,
+.c-btn--link.c-btn--focus:hover {
+	--btn-bdc--hov: var(--btn-bdc--foc);
+}
+.c-btn--outline {
+	--btn-bdc--dis: var(--c-grey-300);
+	--btn-bgc: transparent;
+	--btn-bgc--act: transparent;
+	--btn-bgc--foc: transparent;
+	--btn-bgc--hov: var(--btn-bdc);
+	--btn-c: var(--btn-bdc);
+	--btn-c--act: var(--btn-bdc);
+	--btn-c--foc: var(--btn-bdc);
+}
+.c-btn--ui {
+	--btn-bdc: var(--c-grey-100);
+	--btn-bgc: transparent;
+	--btn-bgc--hov: var(--c-grey-100);
+	--btn-c: var(--c-txt);
+	--btn-c--hov: var(--c-txt);
+}
+.c-btn--ui.c-btn--circle {
+	--btn-bdc: transparent;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+	.c-btn {
+		--btn-bdc: var(--c-blue-100);
+		--btn-bdc--act: var(--c-blue-100);
+		--btn-bdc--dis: var(--c-grey-100);
+		--btn-bdc--foc: var(--c-blue-100);
+		--btn-bdc--hov: var(--c-blue-100);
+		--btn-bgc--dis: var(--c-grey-300);
+		--btn-bgc--hov: var(--c-blue-800);
+		--btn-c--dis: var(--c-grey-500);
+	}
+	.c-btn--green {
+		--btn-bdc: var(--c-green-100);
+		--btn-bdc--act: var(--c-green-100);
+		--btn-bdc--foc: var(--c-green-100);
+		--btn-bdc--hov: var(--c-green-100);
+		--btn-bgc--hov: var(--c-green-800);
+	}
+	.c-btn--grey {
+		--btn-bdc: var(--c-grey-100);
+		--btn-bdc--act: var(--c-grey-100);
+		--btn-bdc--foc: var(--c-grey-100);
+		--btn-bdc--hov: var(--c-grey-100);
+		--btn-bgc--hov: var(--c-grey-800);
+	}
+	.c-btn--red {
+		--btn-bdc: var(--c-red-100);
+		--btn-bdc--act: var(--c-red-100);
+		--btn-bdc--foc: var(--c-red-100);
+		--btn-bdc--hov: var(--c-red-100);
+		--btn-bgc--hov: var(--c-red-700);
+	}
+	.c-btn--link {
+		--btn-bdc: transparent;
+		--btn-bdc--dis: transparent;
+		--btn-bdc--hov: transparent;
+		--btn-bgc--dis: transparent;
+		--btn-bgc--hov: transparent;
+		--btn-c: var(--c-link--dark);
+		--btn-c--act: var(--c-link--dark);
+		--btn-c--foc: var(--c-link--dark);
+		--btn-c--hov: var(--c-link--dark);
+	}
+	.c-btn--ui {
+		--btn-bdc: transparent;
+		--btn-bdc--hov: transparent;
+		--btn-bgc: transparent;
+		--btn-bgc--hov: var(--c-grey-700);
+		--btn-c: var(--c-txt--dark);
+		--btn-c--hov: var(--c-txt--dark);
+	}
+}
+
+/* Pattern: Button Text, when used with Icon */
+.c-ico + .c-btn__text {
+	margin-inline-start: var(--btn-ico-mis);
+}
+/* Pattern: UI-Icon with ToolTip */
+.c-btn--ui .c-ttp {
+	--tt-off: var(--u-150);
+	--tt-tri-sz: 0px;
+}

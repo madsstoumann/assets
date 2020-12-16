@@ -1,0 +1,157 @@
+@import 'app.css';
+.app {
+	--clippath: ;
+	--clippath-ani: ;
+}
+.app__animation {
+	display: flex;
+}
+.app__img {
+	bottom: 20px;
+	clip-path: var(--clippath);
+	height: calc(100% - 40px);
+	left: 20px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: calc(100% - 40px);
+}
+.app__img-animation {
+	bottom: 0;
+	clip-path: var(--clippath-ani);
+	height: 100%;
+	left: 0;
+	position: absolute;
+	right: 0;
+	transition: clip-path 500ms ease-in;
+	top: 0;
+	width: 100%;
+}
+.app__img-wrapper {
+	position: relative;
+	touch-action: none;
+}
+.app__img-wrapper-animation {
+	flex: 0 0 210px;
+	margin: 0 1rem 1rem 0;
+	padding: 0;
+	position: relative;
+}
+.app__img-wrapper-animation:hover .app__img-animation {
+	clip-path: var(--clippath);
+}
+.app__img-wrapper::after,
+.app__img-wrapper-animation::after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+
+[data-elm="coords"] {
+	display: block;
+	margin: 0.5em 0;
+	text-align: center;
+}
+
+[data-elm="points"] {
+	border: 1px solid #DDD;
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+}
+
+.app__point {
+	background: rgba(100, 100, 100, 0.5);
+	border: 0;
+	border-radius: 50%;
+	color: #fff;
+	cursor: move;
+	height: 40px;
+	outline: none;
+	position: absolute;
+	width: 40px;
+}
+.app__point:focus,
+.app__point:hover {
+	background: rgba(90, 90, 90, 0.9);
+}
+.app__point:focus {
+	box-shadow: inset 0 0 0 4px #333;
+}
+
+[data-elm="presets"] {
+	display: flex;
+	flex-wrap: wrap;
+}
+.app__preset--clip {
+	align-items: center;
+	background-color: transparent;
+	border: var(--app-inp-brd);
+	border-radius: 0.25rem;
+	display: inline-flex;
+	flex: 0 0 60px;
+	flex-direction: column;
+	font-size: xx-small;
+	height: 60px;
+	margin: 0 0.25rem 0.25rem 0;
+	overflow: hidden;
+	position: relative;
+}
+.app__preset--clip::before {
+	border-radius: 50%;
+	content: '';
+	display: inline-block;
+	height: 8px;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 8px;
+}
+.app__preset--clip:focus,
+.app__preset--clip:hover {
+	background-color: #DDD;
+}
+.app__preset--clip div {
+	background-color: #333;
+	height: 32px;
+	margin: 0.25rem 0;
+	pointer-events: none;
+	width: 32px;
+}
+
+button[data-type="ellipse"][data-index="0"] {
+	background-color: orange;
+}
+button[data-type="ellipse"][data-index="1"] {
+	background-color: #70a370;
+}
+button[data-type="ellipse"][data-index="2"] {
+	background-color: tomato;
+}
+code[data-type="ellipse"] {
+	background-color: orange;
+}
+code[data-type="polygon"] {
+	background-color: #70a370;
+}
+code[data-type="url"] {
+	background-color: tomato;
+}
+code[data-type] {
+	color: #fff;
+	padding: 2px 4px;
+}
+
+[data-type="ellipse"]::before {
+	background-color: orange;
+}
+[data-type="polygon"]::before {
+	background-color: #70a370;
+}
+[data-type="url"]::before {
+	background-color: tomato;
+}

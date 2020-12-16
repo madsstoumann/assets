@@ -1,0 +1,349 @@
+/**
+ * c-lay_navigation.css
+ * @version 1.0.13
+ * @summary 13-11-2020
+ * @author Mads Stoumann
+ * @description Stylesheet for Layout Component, Navigation: Arrows, Back-To-Top, Dots, Tabs
+*/
+
+/* BACK TO TOP */
+[data-back-to-top] {
+	background-color: var(--active);
+	bottom: var(--mnu-bot-h, 0);
+	color: var(--active-c);
+	font-size: x-small;
+	line-height: 1.3;
+	opacity: 0;
+	padding: 1em;
+	position: fixed;
+	right: 0;
+	transition: opacity .3s ease-in-out;
+	text-align: center;
+	text-decoration: none;
+	visibility: hidden;
+	z-index: var(--z--bttp);
+}
+/* TODO ? */
+.c-lay__btt {
+	opacity: 1;
+	visibility: visible;
+}
+
+/*
+=====
+DOTS
+=====
+*/
+.c-lay__dots {
+	--lay-dot-bdrs: 50%;
+	--lay-dot-bgc: hsl(210, 24%, 80%);
+	--lay-dot-bgc--cur: hsl(210, 24%, 30%);
+	--lay-dot-bgc--cur-focus: hsla(210, 24%, 90%, 0.65);
+	--lay-dot-bxsh: hsla(210, 24%, 15%, 0.65);
+	--lay-dot-m: 0 10px;
+	--lay-dot-h: 0.5rem;
+	--lay-dots-m: 1rem 0 0 0;
+	--lay-dot-p: var(--lay-gap) 0;
+	--lay-dot-w: 0.5rem;
+
+	display: none;
+	justify-content: center;
+	padding: var(--lay-dot-p);
+	position: relative;
+}
+.c-lay__dot {
+	background-color: var(--lay-dot-bgc);
+	border: 0;
+	border-radius: var(--lay-dot-bdrs);
+	box-sizing: border-box;
+	display: block;
+	height: var(--lay-dot-h);
+	margin: var(--lay-dot-m);
+	padding: 0;
+	transition: .3s ease, background-color 0.3s ease-in;
+	width: var(--lay-dot-w);
+}
+.c-lay__dot:focus {
+	box-shadow: 0 0 0 3px var(--lay-dot-bxsh);
+	outline: none;
+}
+.c-lay__dot--current {
+	background-color: var(--lay-dot-bgc--cur);
+}
+.c-lay__dot--current:focus {
+	background-color: var(--lay-dot-bgc--cur-focus);
+}
+
+/* Modifier: Flat lines */
+.c-lay__dots--line .c-lay__dot {
+	--lay-dot-bdrs: 0;
+	--lay-dot-h: 2px;
+	--lay-dot-w: 40px;
+}
+
+/*
+===========
+NAV ARROWS
+=========== 
+*/
+.c-lay__nav {
+	display: block;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+.c-lay__nav[hidden] {
+	display: none;
+}
+.c-lay__nav-btn {
+	--lay-nav-btn-bg: hsla(195, 75%, 15%, 0.85);
+	--lay-nav-btn-bxsh: hsla(195, 75%, 95%, 0.35);
+	--lay-nav-btn-bxsh--focus: hsla(195, 75%, 15%, 0.35);
+	--lay-nav-btn-c: hsla(195, 75%, 95%, 1);
+	--lay-nav-btn-ico-bdw: 2px;
+	--lay-nav-btn-ico-sz: 1rem;
+	--lay-nav-btn-sz: 52px;
+	align-items: center;
+	background-color: var(--lay-nav-btn-bg);
+	border: 0;
+	border-radius: var(--lay-nav-btn-sz);
+	color: var(--lay-nav-btn-c);
+	cursor: pointer;
+	display: none;
+	-webkit-font-smoothing: antialiased;
+	height: var(--lay-nav-btn-sz);
+	justify-content: center;
+	opacity: .65;
+	text-align: center;
+	transform: translateZ(0);
+	transition: opacity .3s ease-in;
+	width: var(--lay-nav-btn-sz);
+	z-index: var(--z--navi);
+}
+.c-lay__nav-btn:focus {
+	box-shadow: 0 0 0 8px var(--lay-nav-btn-bxsh);
+	outline: none;
+}
+.c-lay__nav-btn:disabled {
+	opacity: 0;
+}
+.c-lay__nav-btn i {
+	border-style: solid;
+	border-width: var(--lay-nav-btn-ico-bdw) var(--lay-nav-btn-ico-bdw) 0 0;
+	box-sizing: border-box;
+	display: inline-block;
+	height: var(--lay-nav-btn-ico-sz);
+	position: relative;
+	transform: rotate(45deg);
+	transition: left .3s ease-in;
+	width: calc(var(--lay-nav-btn-ico-sz) * 1);
+}
+.c-lay__nav-btn i:before {
+	box-shadow: inset 0 0 0 32px;
+	content: '';
+	height: var(--lay-nav-btn-ico-bdw);
+	position: absolute;
+	right: 0;
+	top: calc(var(--lay-nav-btn-ico-bdw) / -2);
+	transform: rotate(-45deg);
+	-webkit-transform-origin: right top;
+	transform-origin: right top;
+	transition: width .3s ease-in;
+	width: 0;
+}
+.c-lay__nav-btn[rel="next"] {
+	position: absolute;
+	right: calc(var(--lay-gap) * 2);
+}
+.c-lay__nav-btn[rel="prev"] {
+	left: calc(var(--lay-gap) * 2);
+	position: absolute;
+}
+.c-lay__nav-btn[rel="next"] i {
+	left: calc(var(--lay-nav-btn-ico-bdw) * -1);
+}
+.c-lay__nav-btn[rel="prev"] i {
+	left: var(--lay-nav-btn-ico-bdw);
+	transform: rotate(-135deg);
+}
+.c-lay__nav-btn[rel="next"]:focus,
+.c-lay__nav-btn[rel="prev"]:focus,
+.c-lay__nav-btn[rel="next"]:not(:disabled):hover,
+.c-lay__nav-btn[rel="prev"]:not(:disabled):hover {
+	box-shadow: 0 0 0 8px var(--lay-nav-btn-bxsh);
+	opacity: 1;
+}
+.c-lay__nav-btn[rel="next"]:focus i,
+.c-lay__nav-btn[rel="next"]:hover i {
+	left: calc(var(--lay-nav-btn-ico-bdw) / 2);
+}
+.c-lay__nav-btn[rel="prev"]:focus i,
+.c-lay__nav-btn[rel="prev"]:hover i {
+	left: 0;
+}
+
+.c-lay__nav-inner {
+	align-items: center;
+	display: flex;
+	height: calc(100% - var(--lay-inner-pb));
+	margin: 0 auto;
+	max-width: var(--lay-inner-w);
+	position: relative;
+	width: 100%;
+}
+
+/* Modifiers */
+[data-nav*="arrows"] .c-lay__nav-btn {
+	display: inline-flex;
+}
+[data-nav*="dots"] .c-lay__dots {
+	display: flex;
+}
+[data-nav*="dots"] .c-lay__nav-inner {
+	height: calc(100% - var(--lay-inner-pb) - (var(--lay-gap) * 2));
+}
+[data-nav*="dots inside"] .c-lay__nav-inner {
+	height: calc(100% - var(--lay-inner-pb));
+}
+[data-nav*="dots scroll"] .c-lay__nav-inner {
+	height: calc(100% - var(--lay-inner-pb) - (var(--lay-gap) * 3));
+}
+[data-nav*="inside"] .c-lay__dots {
+	bottom: var(--lay-gap);
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+}
+
+.c-lay[data-nav*="inside"] {
+	--lay-dot-bgc: rgba(0,0,0,.25);
+	--lay-dot-bgc--cur: rgba(255,255,255,.95);
+}
+[data-toggle-expanded]:focus .c-lay__nav-btn i::before,
+[data-toggle-expanded]:hover .c-lay__nav-btn i::before,
+.c-lay__nav-btn[rel="next"]:focus i::before,
+.c-lay__nav-btn[rel="prev"]:focus i::before,
+.c-lay__nav-btn[rel="next"]:hover i::before,
+.c-lay__nav-btn[rel="prev"]:hover i::before {
+	width: calc(var(--lay-nav-btn-ico-sz) * 1.25);
+}
+[data-section-type="grid-gallery"] .c-lay__dots,
+[data-section-type="grid-gallery"] .c-lay__nav,
+[data-section-type="masonry"] .c-lay__dots,
+[data-section-type="masonry"] .c-lay__nav,
+[data-section-type="stack"] .c-lay__dots,
+[data-section-type="stack"] .c-lay__nav {
+	display: none;
+}
+
+/* 
+============
+SCROLL-LINE
+============
+*/
+[data-scroll-line] {
+	--bgc:firebrick;
+	--h: 2px;
+	background-color: var(--bgc);
+	height: var(--h);
+	opacity: 0.85;
+	position: fixed;
+	top: var(--scroll-line-top, 0px);
+	transform: translateX(calc(-100% + var(--scroll-p, 0%)));
+	width: 100%;
+	will-change: transform;
+	z-index: var(--z--scln);
+}
+
+/*
+=====
+TABS
+=====
+*/
+.c-lay__tabs {
+	--bdw: 2px;
+	--fz: 0.75rem;
+	backdrop-filter: saturate(180%) blur(15px);
+	background-color: var(--bgc);
+	position: sticky;
+	top: calc(var(--scroll-line-top, 0px) - 1px);
+	z-index: var(--z--tabs);
+}
+.c-lay__tab {
+	--bdrs: 0;
+	--bgc: transparent;
+	--m: 0;
+	--p: 0.75em 0.75em 1em;
+
+	background-color: var(--bgc);
+	border-color: var(--bdc);
+	border-radius: var(--bdrs);
+	border-style: solid;
+	border-width: 0 0 var(--bdw) 0;
+	bottom: calc(0px - var(--bdw));
+	color: var(--c--dim);
+	font-family: inherit;
+	font-size: var(--fz);
+	margin: var(--m);
+	padding: var(--p);
+	overflow: hidden;
+	position: relative;
+	text-overflow: ellipsis;
+	width: 10rem;
+	white-space: nowrap;
+	
+}
+.c-lay__tab:focus {
+	outline: none;
+	text-decoration: underline;
+}
+.c-lay__tab--current {
+	border-color: var(--active);
+	color: var(--c);
+}
+.c-lay__tabs-inner {
+	align-items: center;
+	display: flex;
+	margin: 0 auto;
+	padding: 0 var(--lay-gap);
+	max-width: var(--lay-inner-maw);
+}
+.c-lay__tabs-nav {
+	width: 100%; 
+}
+/* Modifier: Tab Pills */
+/*
+.c-lay__tabs {
+	--bdw: 1px;
+	--bgc: var(--bgc--dim);
+}
+.c-lay__tab {
+	--bdw: 0;
+	--m: var(--lay-gap) 0;
+	--p: 0.75em;
+}
+.c-lay__tab--current {
+	--bdrs: 0.35rem;
+	--bgc: var(--active);
+	--c: var(--active-c);
+}
+*/
+
+/* RWD */
+@media screen and (min-width: 48rem) {
+	[data-scroll-line] {
+		--h: 5px;
+	}
+	.c-lay__tabs-nav {
+		border-bottom: var(--bdw) solid var(--bdc);
+	}
+}
+@media screen and (min-width: 64rem) {
+	
+	.c-lay__tabs {
+		--fz: 1rem;
+	}
+	
+}

@@ -1,0 +1,133 @@
+/**
+ * c-fle.css
+ * @version 1.0.01
+ * @summary 22-05-2020
+ * @author Mads Stoumann
+ * @description Stylesheet for FileUpload.
+	Variables are concatinated from: 
+	- element-prefix + 
+	- emmet-css-abbreviation + 
+	- modifier (:active, :disabled, :focus, :hover)
+	More on emmett: https://docs.emmet.io/cheat-sheet/
+*/
+@import 'config.css';
+
+.c-fle {
+	box-sizing: content-box;
+	font-family: var(--f-body);
+  width: 50%;
+}
+
+.c-fle__drop {
+	background-color: #FFF;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+  position: relative;
+	text-align: center;
+	border: 1px solid #DDD;
+}
+.c-fle__drop-button {
+	align-self: center;
+	margin: 1rem 0;
+	/* pointer-events: none; */
+}
+.c-fle__drop--drag {
+	border-style: dashed;
+	/* background-color: rgba(255, 255, 255, 0.75); */
+}
+.c-fle__drop--drag .c-fle__input {
+	background-color: rgba(0, 0, 0, 0.5);
+	opacity: 0.1;
+	z-index: 2;
+}
+
+.c-fle__drop-text {
+	color: #555;
+	display: inline-block;
+	margin-bottom: .5rem;
+}
+
+.c-fle__input {
+  height: 100%;
+	left: 0;
+	opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.c-fle__list {
+  display: flex;
+	flex: 0 0 100%;
+	flex-wrap: wrap;
+	list-style: none;
+  padding: 0;
+}
+.c-fle__item-image {
+  border-color: var(--fld-bdc);
+	border-radius: 0.25rem;
+	flex: 0 0 3em;
+	height: 3em;
+	margin: 0 .5rem 0 0;
+  object-fit: cover;
+  object-position: center center;
+  width: 3em;
+}
+
+.c-fle__item {
+	align-items: center;
+	background-color: #F6F6F6;
+	border-radius: .25rem;
+	color: #333;
+	display: flex;
+
+	font-size: small;
+	justify-content: space-between;
+	margin: 0 0 .5rem 0;
+	padding: .5rem 0.75rem;
+	position: relative;
+	width: 100%;
+	
+}
+.c-fle__item-name {
+	flex: 1;
+}
+.c-fle__item-remove {
+	background-color: #666;
+	border: none;
+	border-radius: 100%;
+  color: #fff;
+  height: 2em;
+  margin-left: 0.5rem;
+  text-align: center;
+  
+  width: 2em;
+}
+
+.c-fle__item-remove:hover {
+	background-color: indianred;
+}
+.c-fle__item-size {
+	flex: 0 0 20%;
+	text-align: right;
+}
+/* .c-fle__list-item::after {
+  background-color: indianred;
+  border-radius: 100%;
+  color: #fff;
+  content: '\2715';
+  display: inline-block;
+  height: 1.5em;
+  line-height: 1.5em;
+  position: absolute;
+  right: -0.5em;
+  text-align: center;
+  top: -0.5em;
+  width: 1.5em;
+} */
+
+
+.c-fle:focus-within .c-fle__dropzone-button {
+  border-color: blueviolet;
+}

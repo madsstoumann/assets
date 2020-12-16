@@ -1,0 +1,18 @@
+{
+  "key": "font-family",
+  "values": [
+		{
+			"name": "Inter",
+			"description": "ariable Font",
+			"deletable": false,
+			"value": "'Inter', sans-erif",
+			"values":
+			[
+				{
+					"font-family": "'Inter', sans-serif",
+					"@import": "import"
+				}
+			]
+    }
+  ]
+}

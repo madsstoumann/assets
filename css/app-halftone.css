@@ -1,0 +1,107 @@
+@import 'app.css';
+@import 'c-rng.css';
+
+.app {
+  --cyan-z: 3;
+  --magenta-z: 2;
+  --yellow-z: 1;
+  --black-z: 4;
+}
+.app[style*="cmyk"] {
+  --cyan-z: 1;
+  --magenta-z: 2;
+  --yellow-z: 3;
+  --black-z: 4;
+}
+
+.app__preview {
+  border: 2px solid black;
+  min-height: 20rem;
+  flex: 0 1 calc(66% - (var(--app-m-unit) / 2));
+
+}
+.app__controls {
+  flex: 0 1 calc(33% - (var(--app-m-unit) / 2));
+}
+
+.halftone { 
+  height: 100%;
+  left: 0;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+}
+
+.halftone::after {
+  background-image:
+    radial-gradient(var(--dot-c) var(--dot-size), transparent var(--dot-size));
+  background-position: 0 0;
+  background-size: var(--dot-density) var(--dot-density);
+  content: "";
+  height: 200%;
+  left: -50%;
+  position: absolute;
+  top: -50%;
+  transform: rotate(var(--dot-angle));
+  width: 200%;
+  z-index: -1;
+}
+
+.halftone__wrapper {
+  --dot-angle: 0deg;
+  --dot-c: #000;
+  --dot-density: 100px;
+  --dot-size: 35px;
+
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.halftone__wrapper div:first-of-type::after {
+  background-color: var(--background);
+}
+
+[data-elm="cyan"] {
+  --dot-c: #00FFFF;
+  --dot-angle: var(--cyan-dot-angle, 15deg);
+  --dot-density: var(--cyan-dot-density, 50px);
+  --dot-size: var(--cyan-dot-size, 10px);
+  z-index: var(--cyan-z);
+}
+
+[data-elm="magenta"] {
+  --dot-c: #FF00FF;
+  --dot-angle: var(--magenta-dot-angle, 75deg);
+  --dot-density: var(--magenta-dot-density, 50px);
+  --dot-size: var(--magenta-dot-size, 10px);
+  /* animation: hypnotic 2s ease-in-out infinite alternate; */
+  z-index: var(--magenta-z);
+}
+
+[data-elm="yellow"] {
+  --dot-c: #FFFF00;
+  --dot-angle: var(--yellow-dot-angle, 0deg);
+  --dot-density: var(--yellow-dot-density, 50px);
+  --dot-size: var(--yellow-dot-size, 10px);
+  z-index: var(--yellow-z);
+}
+
+[data-elm="black"] {
+  --dot-c: #000000;
+  --dot-angle: var(--black-dot-angle, 45deg);
+  --dot-density: var(--black-dot-density, 50px);
+  --dot-size: var(--black-dot-size, 10px);
+  z-index: var(--black-z);
+}
+
+@keyframes hypnotic {
+  0% {
+    transform: rotate(2deg) scale(1);
+  }
+  100% {
+    transform: rotate(-2deg) scale(2);
+  }
+}

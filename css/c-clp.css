@@ -1,0 +1,141 @@
+@import 'c-rng.css';
+
+[data-cp="wrapper"] {
+	--alpha: 1;
+  --hue: 0;
+  --saturation: 100%;
+	--lightness: 50%;
+
+	background-color: #FFF;
+	border-radius: .25rem;
+	box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+	font-family: ui-sans-serif, system-ui, sans-serif;
+	font-size: small;
+	padding: 0 .75rem;
+	position: absolute;
+	max-width: 30rem;
+	z-index: 1;
+}
+[data-cp="fieldset"] {
+	border: 0;
+	display: flex;
+	flex: 0 0 100%;
+	padding: 0;
+	width: 100%;
+}
+[data-cp="fieldset"] input {
+	border: 1px solid #EEE;
+	border-radius: 0.25rem;
+	font-family: inherit;
+	font-size: inherit;
+	padding: 0.125rem 0;
+	text-align: center;
+	width: 100%;
+}
+[data-cp="fieldset"] label {
+	color: #999;
+	display: flex;
+	flex: 1;
+	flex-flow: column;
+	margin: 0 0.1rem 0.5rem 0.1rem;
+	text-align: center;
+}
+[data-cp="inner"] { display: flex; justify-content: space-between; }
+[data-cp="inputs"] { flex: 0 0 calc(45% - 0.5rem); }
+[data-cp="nav"] { display: flex; justify-content: flex-end;	margin-bottom: 0.5rem; }
+[data-cp="ranges"] { flex: 0 0 55%; }
+[data-cp="ranges-update"] { flex: 0 0 100%; }
+
+/* DATA-ELEMENTS: */
+[data-cp="wrapper"] .c-rng {
+	--rng-m: 1rem 0;
+	--rng-thumb-bxsh: inset 0 0 0 0.125rem hsl(var(--hue), 100%, 30%);
+	--rng-thumb-bxsh--focus: inset 0 0 0 0.125rem rgba(255, 255, 255, 0.8), 0 0 0 0.125rem hsl(var(--hue), 100%, 25%);
+}
+[data-elm="alpha"].c-rng {
+	--rng-bgi: linear-gradient(to right, transparent, hsl(var(--hue), var(--saturation), var(--lightness))), url('data:image/svg+xml;utf8,<svg preserveAspectRatio="none" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="5" height="5" fill="grey" /><rect x="5" y="5" width="5" height="5" fill="grey" /><rect x="5" y="0" width="5" height="5" fill="white" /><rect x="0" y="5" width="5" height="5" fill="white" /></svg>');
+	--rng-thumb-bgc: hsl(var(--hue), var(--saturation), var(--lightness), var(--alpha));
+	background-position: 0 0;	
+	background-size: cover, 0.75rem 0.75rem;
+}
+[data-elm="cancel"],
+[data-elm="ok"] {
+	background-color: #EEE;;
+	border: 1px solid #DDD;
+	border-radius: 0.25rem;
+	padding: 0.25rem 0.5rem;
+}
+[data-elm="cancel"] {
+	color: #606060;
+	margin-right: 0.5rem;
+}
+[data-elm="hue"].c-rng {
+	--rng-bgi: linear-gradient(to right, red, #ff8000, #ff0, #80ff00, lime, #00ff80, cyan, #007fff, blue, #7f00ff, #f0f, #ff0080, red);
+	--rng-thumb-bgc: hsl(var(--hue), 100%, 50%);
+}
+[data-elm="lightness"].c-rng {
+	--rng-bgi: linear-gradient(to right, #000, hsl(var(--hue), 100%, 50%), #FFF);
+	--rng-thumb-bgc: hsl(var(--hue), 100%, var(--lightness), 1);
+}
+[data-elm="saturation"].c-rng {
+	--rng-bgi: linear-gradient(to right, #808080, hsl(var(--hue), 100%, 50%));
+	--rng-thumb-bgc: hsl(var(--hue), var(--saturation), 50%, 1);
+}
+[data-elm="selected"] {
+	align-items: center;
+	background-color: hsla(var(--hue), var(--saturation), var(--lightness), var(--alpha));
+	color: var(--cp-c, #FFF);
+	border-radius: 0.25rem;
+	display: flex;
+	height: 5.5rem;
+	justify-content: center;
+	margin-bottom: 0.5rem;
+}
+
+/* RANGE LABELS */
+[data-elm="alpha"]::before,
+[data-elm="lightness"]::before,
+[data-elm="saturation"]::before {
+	color: #999;
+	content: attr(aria-label);
+	font-size: x-small;
+	position: absolute;
+	top: -1.35rem;
+}
+/* STATE */
+[data-cp-show="false"] { display: none; }
+[data-cp-show="true"] { display: block; }
+
+/* MODIFIERS */
+[data-cp-display="full"] [data-cp="nav"] { margin-top: 1rem; }
+[data-cp-display="full"] [data-elm="selected"] { margin-bottom: 1rem; } 
+[data-cp-display="micro"] [data-elm="selected"] { height: 2.75rem; }
+[data-cp-display="micro"], [data-cp-display="mini"] { max-width: 15rem; }
+[data-cp-display="micro"] .c-rng, [data-cp-display="mini"] .c-rng {
+	--rng-h: 0.35rem;
+	--rng-thumb-h: 1.5rem;
+	--rng-thumb-w: 1.5rem;
+}
+[data-cp-display="micro"] button, [data-cp-display="mini"] button {
+	font-size: x-small;
+}
+
+/* TRIGGER ELEMENT */
+[data-colorpicker] {
+	background-color: var(--cp-bgc, #FFF);
+	color: var(--cp-c, #000);
+	position: relative;
+}
+
+/* HIDDEN */
+.u-hidden, [hidden] {
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(1px);
+	display: block;
+	height: 1px;
+	overflow: hidden; 
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}

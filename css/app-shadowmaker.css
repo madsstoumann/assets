@@ -1,0 +1,37 @@
+@import 'app.css';
+@import 'c-clp.css';
+.app {
+	--offsetX: 8px;
+	--offsetY: 8px;
+	--blur: 0;
+	--spread: 0;
+	--bxsh-c: rgba(0,0,0,0.3);
+	--preview-sz: 200px;
+}
+.app__preview {
+	background-color: #f7fafc;
+	border: 1px solid #cbd5e0;
+	border-radius: .25rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 4rem 0;
+  text-align: center;
+}
+[data-elm="previewBox"] {
+	background-color: white;
+	border-radius: .25rem;
+	height: var(--preview-sz);
+	width: var(--preview-sz);
+}
+
+[data-elm="previewDropInner"] {
+	background-color: white;
+	clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+	height: var(--preview-sz);
+	width: var(--preview-sz);
+}
+[data-elm="previewText"] {
+	font-size: 4rem;
+	font-weight: 900;
+}

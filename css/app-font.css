@@ -1,0 +1,45 @@
+@import 'app.css';
+@import 'c-inp.css';
+@import 'c-rng.css';
+.app {
+  --font-family: 'Arial',system-ui, sans-serif;
+  --fontSize: 32px;
+}
+
+[data-elm="fontSpecimen"] {
+  font-family: var(--font-family);
+  font-size: var(--fontSize);
+  line-height: 1.4;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+}
+
+[data-elm="fontSpecimen"]::after {
+  content: '';
+  position: absolute;
+  left: inherit;
+  margin-top: inherit;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to right,transparent, white 95%);
+  width: 270px;
+}
+
+[data-elm="fontSizes"] {
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+[data-elm="fontInfo"] {
+  background-color: #DDD;
+  font-family: monospace;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.app__panel-wrapper { 
+  position: relative;
+}

@@ -1,0 +1,43 @@
+@import 'app.css';
+@import 'c-rng.css';
+.app {
+	--blur: 0;
+	--brightness: 1;
+	--contrast: 1;
+	--grayscale: 0;
+	--hue-rotate: 0deg;
+	--invert: 0;
+	--opacity: 1;
+	--saturate: 1;
+	--sepia: 0;
+	--url: ;
+}
+
+[data-elm="filters-wrapper"] {
+	margin: var(--app-m-unit) 0 0 0;
+}
+[data-elm="preview"] {
+	filter: var(--url) blur(var(--blur)) brightness(var(--brightness)) contrast(var(--contrast)) grayscale(var(--grayscale)) hue-rotate(var(--hue-rotate)) invert(var(--invert)) opacity(var(--opacity)) saturate(var(--saturate)) sepia(var(--sepia));
+	max-width: 100%;
+	will-change: filter;
+}
+
+.app__img-wrapper::after {
+	content: '';
+	display: block;
+	padding-bottom: 100%;
+}
+
+.app__thumbnails {
+	display: flex;
+	
+	width: 100%;
+	
+}
+.app__img-thumb { 
+	background-size: 100%;
+	border: 2px solid #FFF;
+	flex: 1;
+	height: 100px;
+	background-position: 50% 50%;
+}

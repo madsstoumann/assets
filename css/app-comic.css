@@ -1,0 +1,11 @@
+@import 'app.css';
+
+.app__preview {
+	border: 2px solid tomato;
+	min-height: 20rem;
+	flex: 0 1 calc(66% - (var(--app-m-unit) / 2));
+
+}
+.app__controls {
+	flex: 0 1 calc(33% - (var(--app-m-unit) / 2));
+}
