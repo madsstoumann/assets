@@ -1,0 +1,58 @@
+@import 'app.css';
+@import 'c-clp.css';
+@import 'c-rng.css';
+
+.app {
+	--color: rgba(40,145,200,1);
+	--clippath: polygon(50% 0%, 56.95% 6.10%, 65.45% 2.45%, 70.18% 10.40%, 79.39% 9.55%, 81.43% 18.57%, 90.45% 20.61%, 89.60% 29.82%, 97.55% 34.55%, 93.90% 43.05%, 100% 50%, 93.90% 56.95%, 97.55% 65.45%, 89.60% 70.18%, 90.45% 79.39%, 81.43% 81.43%, 79.39% 90.45%, 70.18% 89.60%, 65.45% 97.55%, 56.95% 93.90%, 50% 100%, 43.05% 93.90%, 34.55% 97.55%, 29.82% 89.60%, 20.61% 90.45%, 18.57% 81.43%, 9.55% 79.39%, 10.40% 70.18%, 2.45% 65.45%, 6.10% 56.95%, 0% 50%, 6.10% 43.05%, 2.45% 34.55%, 10.40% 29.82%, 9.55% 20.61%, 18.57% 18.57%, 20.61% 9.55%, 29.82% 10.40%, 34.55% 2.45%, 43.05% 6.10%);
+	--hover: polygon(50% 0%, 51.55% 40.24%, 65.45% 2.45%, 54.48% 41.20%, 79.39% 9.55%, 56.98% 43.02%, 90.45% 20.61%, 58.80% 45.52%, 97.55% 34.55%, 59.76% 48.45%, 100% 50%, 59.76% 51.55%, 97.55% 65.45%, 58.80% 54.48%, 90.45% 79.39%, 56.98% 56.98%, 79.39% 90.45%, 54.48% 58.80%, 65.45% 97.55%, 51.55% 59.76%, 50% 100%, 48.45% 59.76%, 34.55% 97.55%, 45.52% 58.80%, 20.61% 90.45%, 43.02% 56.98%, 9.55% 79.39%, 41.20% 54.48%, 2.45% 65.45%, 40.24% 51.55%, 0% 50%, 40.24% 48.45%, 2.45% 34.55%, 41.20% 45.52%, 9.55% 20.61%, 43.02% 43.02%, 20.61% 9.55%, 45.52% 41.20%, 34.55% 2.45%, 48.45% 40.24%);
+}
+.app__animation {
+	display: flex;
+}
+.app__img,
+.app__img-animation {
+	background-color: var(--color);
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	object-fit: cover;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+}
+.app__img {
+	clip-path: var(--clippath);
+}
+.app__img-animation {
+	clip-path: var(--hover);
+	transition: clip-path 500ms ease-in;
+}
+.app__img-wrapper-animation {
+	flex: 0 0 210px;
+	margin: 0 1rem 0 0;
+	padding: 0;
+	position: relative;
+}
+.app__img-wrapper-animation:hover .app__img-animation {
+	clip-path: var(--clippath);
+}
+.app__img-wrapper::after,
+.app__img-wrapper-animation::after {
+	content: "";
+	display: block;
+	padding-bottom: 100%;
+}
+.app__img-thumb { 
+	background-size: 100%;
+	border: 2px solid #FFF;
+	flex: 1;
+	height: 100px;
+	background-position: 50% 50%;
+}
+.app__thumbnails {
+	display: flex;
+	width: 100%;
+	
+}
