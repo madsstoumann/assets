@@ -52,7 +52,10 @@
 	height: 100px;
 	background-position: 50% 50%;
 }
+.app__img-thumb:first-of-type {
+	background-color: var(--color);
+}
 .app__thumbnails {
 	display: flex;
-	width: 100%;	
+	width: 100%;
 }
