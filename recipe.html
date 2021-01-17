@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <title>Recipe</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <style>
+    body {
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      margin: 0 auto;
+      max-width: 48rem;
+      padding: 0;
+    }
+    .c-rcp {
+      --gap: 12px;
+      --tab-c: #444;
+      color: #333;
+      font-size: 1rem;
+      line-height: 1.5;
+      padding: 0 var(--gap);
+    }
+    .c-rcp__image {
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      width: 100%;
+    }
+    .c-rcp__image-wrapper {
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+    .c-rcp__image-wrapper::after {
+      content: "";
+      display: block;
+      padding-bottom: 56.25%;
+    }
+    .c-rcp__info {
+      display: flex;
+      font-size: small;
+      gap: var(--gap);
+    }
+    .c-rcp__info-item {
+      background-color: #EEE;
+      border-radius: 0.25rem;
+      flex: 1;
+      padding: 0.75em;
+      text-align: center;
+    }
+    .c-rcp__info-item strong {
+      display: block;
+    }
+    .c-rcp__list {
+      background-color: #fff;
+      padding: 0 var(--gap);
+    }
+    .c-rcp__list li {
+      border-bottom: 1px solid #CCC;
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5em 0;
+    }
+    .c-rcp__list li > span {
+      font-weight: bold;
+    }
+    .c-rcp__list li:last-of-type {
+      border: 0;
+    }
+    .c-rcp__name {
+      margin-block-end: var(--gap);
+    }
+    .c-rcp__panel {
+      border: 1px solid var(--tab-c);
+      display: none;
+      margin: 0;
+      order: 2;
+      padding: var(--gap);
+      width: 100%;
+    }
+    .c-rcp__rating {
+      color: #777;
+      margin-block-end: var(--gap);
+    }
+    .c-rcp__rating-star {
+      color: gold;
+    }
+    .c-rcp__steps li {
+      margin-inline-start: var(--gap);
+      padding-block-end: var(--gap);
+      padding-inline-start: var(--gap);
+    }
+    .c-rcp__tab {
+      border-color: var(--tab-c);
+      border-style: solid;
+      border-block-end-width: 0px;
+      border-block-start-width: 1px;
+      border-inline-end-width: 0px;
+      border-inline-start-width: 1px;
+      cursor: pointer;
+      flex: 1;
+      padding: 0.75em;
+      text-align: center;
+      user-select: none;
+    }
+    .c-rcp__tab:first-of-type {
+    }
+    .c-rcp__tab:last-of-type {
+      border-inline-end-width: 1px;
+    }
+    .c-rcp__tabs {
+      display: flex;
+      flex-flow: wrap;
+      font-size: small;
+      margin: 0;
+      margin-block-end: var(--gap);
+      position: sticky;
+      top: var(--gap);
+    }
+    .c-rcp__tabs [type="radio"]:checked + .c-rcp__tab {
+      background-color: var(--tab-c);
+      color: #EEE;
+    }
+    .c-rcp__tabs [type="radio"]:checked + .c-rcp__tab + .c-rcp__panel {
+      display: block;
+    }
+    .c-rcp__tabs [type="radio"] {
+      display: none;
+    }
+
+    /* SCREEN WAKE LOCK */
+    [data-wake-lock] span {
+      --bgc: rgba(0, 0, 0, 0.5);
+      --c: rgba(255, 255, 255, 0.9);
+      --ico: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke="black" fill="none"><path stroke="none" d="M0 0h24v24H0z" /><line x1="3" y1="3" x2="21" y2="21" /><path d="M10.584 10.587a2 2 0 0 0 2.828 2.83" /><path d="M9.363 5.365a9.466 9.466 0 0 1 2.637 -.365c4 0 7.333 2.333 10 7c-.778 1.361 -1.612 2.524 -2.503 3.488m-2.14 1.861c-1.631 1.1 -3.415 1.651 -5.357 1.651c-4 0 -7.333 -2.333 -10 -7c1.369 -2.395 2.913 -4.175 4.632 -5.341" /></svg>');
+      --ico-w: 3rem;
+      --o: 0.9;
+      --w: 4rem;
+
+      background: var(--bgc);
+      border: 0;
+      border-radius: 50%;
+      display: grid;
+      height: var(--w);
+      opacity: var(--o);
+      place-items: center;
+      position: absolute;
+      inset-block-start: 1rem;
+      inset-inline-end: 1rem;
+      width: var(--w);
+    }
+    [data-wake-lock] [type="checkbox"] {
+      display: none;
+    }
+    [data-wake-lock] span::after {
+      background-color: var(--c);
+      content: "";
+      display: block;
+      height: var(--ico-w);
+      mask: no-repeat center center/var(--ico-w) var(--ico);
+      -webkit-mask: no-repeat center center/var(--ico-w) var(--ico);
+      width: var(--ico-w);
+    }
+    [data-wake-lock] [type="checkbox"]:checked + span {
+      --bgc: green;
+      --ico: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke="black" fill="none"><path stroke="none" d="M0 0h24v24H0z" /><circle cx="12" cy="12" r="2" /><path d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7" /></svg>');
+    }
+  </style>
+</head>
+<body>
+
+<div itemscope itemtype="https://schema.org/Recipe">
+  <figure class="c-rcp__image-wrapper">
+    <img class="c-rcp__image" itemprop="image" src="/docs/assets/img/bolognese.jpg" alt="Vegetarian Bolognese" />
+    <label data-wake-lock aria-label="Prevent device from sleeping">
+      <input type="checkbox"  />
+      <span></span>
+    </label>
+  </figure>
+
+  <article class="c-rcp">
+    <h1 class="c-rcp__name" itemprop="name">Vegetarian Bolognese</h1>
+
+    <div class="c-rcp__rating" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+      <span itemprop="ratingValue">5.0</span>
+      <span class="c-rcp__rating-star">★★★★★</span>
+      (<span itemprop="reviewCount">125</span>)
+    </div>
+
+    <aside class="c-rcp__info">
+      <span class="c-rcp__info-item">
+        Prep Time: <meta itemprop="prepTime" content="PT15M"><strong>15 minutes</strong>
+      </span>
+      <span class="c-rcp__info-item">
+        Cook time: <meta itemprop="cookTime" content="PT1H"><strong>1 hour</strong>
+      </span>
+      <span class="c-rcp__info-item">
+        Servings: <strong itemprop="recipeYield">6</strong>
+      </span>
+    </aside>
+
+    <div itemprop="description">
+      <p>Beluga lentils are as good in a beluga bolognese, if only you remember to give them as much love as you would with a beef bolognese. Remember to serve with lots of parmesan, freshly ground pepper and possibly a little freshly chopped parsley! </p>
+      <p>The biggest problem with vegetarian versions of classic meat dishes is when you forget to add enough fat, so there must be plenty of olive oil and butter in the sauce here. I had a leftover cream in the fridge that smoked in, otherwise I usually use 0.5-1 dl whole milk. It rounds off the sauce really nicely. You can easily replace it with soy cream or leave it out for a vegan version. </p>
+      <p>As with a classic bolognese, it only gets better the more time you have to simmer it, and you can easily make a double portion and store half in the freezer. </p>
+      <p>The beluga lenses retain a small bite and work really well in a beluga bolognese, but you can easily make it with other kinds of lenses. If you are a lentil skeptic, red lentils can be a good bet, they boil out more and become part of the sauce. </p>
+    </div>
+
+    <div class="c-rcp__tabs">
+      <input type="radio" checked name="tabs" id="ingredients" />
+      <label for="ingredients" class="c-rcp__tab">Ingredients</label>
+      <ul class="c-rcp__panel c-rcp__list">
+        <li itemprop="recipeIngredient">Onion <span data-unit="1" data-unit-type="">1</span></li>
+        <li itemprop="recipeIngredient">Olive oil <span data-unit="3" data-unit-type="tbsp">3 tbsp</span></li>
+        <li itemprop="recipeIngredient">Carrot, finely grated <span data-unit="1" data-unit-type="">1</span></li>
+        <li itemprop="recipeIngredient">Garlic cloves <span data-unit="1" data-unit-type="">1</span></li>
+        <li itemprop="recipeIngredient">Chili flakes <span data-unit="0.5" data-unit-type="tsp">0.5 tsp</span></li>
+        <li itemprop="recipeIngredient">Thyme, freshly chopped <span data-unit="1" data-unit-type="tbsp">1 tbsp</span></li>
+        <li itemprop="recipeIngredient">Butter <span data-unit="25" data-unit-type="g">25 g</span></li>
+        <li itemprop="recipeIngredient">Tomato puree <span data-unit="2" data-unit-type="tbsp">2 tbsp</span></li>
+        <li itemprop="recipeIngredient">Red wine <span data-unit="1.5" data-unit-type="dl">1.5 dl</span></li>
+        <li itemprop="recipeIngredient">Double cream <span data-unit="0.5" data-unit-type="dl">0.5 dl</span></li>
+        <li itemprop="recipeIngredient">Passata <span data-unit="400" data-unit-type="g">400 g</span></li>
+        <li itemprop="recipeIngredient">Bay leafs <span data-unit="2" data-unit-type="">2</span></li>
+        <li itemprop="recipeIngredient">Vegetable broth <span data-unit="2" data-unit-type="dl">2 dl</span></li>
+        <li itemprop="recipeIngredient">Beluga lentils <span data-unit="130" data-unit-type="g">130 g</span></li>
+      </ul>
+
+      <input type="radio" name="tabs" id="instructions" />
+      <label for="instructions" class="c-rcp__tab">Instructions</label>
+      <ol class="c-rcp__panel c-rcp__steps" itemprop="recipeInstructions">
+        <li>Cut the onion finely and sauté over low heat in the olive oil for 5-10 min.</li>
+        <li>Crush the garlic cloves and chop finely. Add finely grated carrot, chili flakes, thyme and a good dollop of butter and sauté for a few minutes. Move the vegetables to the side and saute the tomato puree well.</li>
+        <li>Add red wine and bring to the boil so that the alcohol evaporates. Add double cream or whole milk (optional), passata, bay leaves, and vegetable stock</li>
+        <li>Let the tomato sauce simmer for 10-30 minutes under a lid. The longer, the better!</li>
+        <li>Rinse the beluga lenses and add. Let simmer for 20-25 minutes. If necessary, add extra water along the way.</li>
+        <li>Season the sauce with lots of pepper & salt and possibly sugar, chili, good vinegar and extra butter / olive oil if needed.</li>
+        <li>Serve with pasta, parmesan, freshly ground pepper and maybe some fresh parsley!</li>
+      </ol>
+
+      <input type="radio" name="tabs" id="info" />
+      <label for="info" class="c-rcp__tab">Facts</label>
+      <div class="c-rcp__panel">
+        <h2>Nutrition facts:</h2>
+        <ul class="c-rcp__list" itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+          <li>Calories<span itemprop="calories">240</span></li>
+          <li>Fat<span itemprop="fatContent">9 g</span></li>
+        </ul>
+        <h2>Other</h2>
+        <ul class="c-rcp__list">
+          <li>Category<span itemprop="recipeCategory">Main Dish</span></li>
+          <li>Cuisine<span itemprop="recipeCuisine">European</span></li>
+          <li>Keywords<span itemprop="keywords">Vegetarian, Pasta-dish</span></li>
+          <li>Author<span itemprop="author">Camilla Skov</span></li>
+          <li>Published<meta itemprop="datePublished" content="2018-12-12"><span itemprop="author">December 11, 2018</span></li>
+          <li>Website<span><a href="https://vegetariskhverdag.dk/2018/12/beluga-bolognese/">Vegetarisk Hverdag</a></span></li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</div>
+
+<script>
+const wakeLockToggle = document.querySelector('[data-wake-lock] > input');
+if (wakeLockToggle && ('wakeLock' in navigator)) {
+  let wakeLock = null;
+  const wakeLockEnable = async () => { 
+    try {
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release', () => {
+        console.log('Wake Lock has been released');
+      });
+      console.log('Wake Lock is active!');
+    } catch (err) {
+      console.error(`${err.name}, ${err.message}`);
+    }
+  }
+  wakeLockToggle.addEventListener('click', () => {
+    if (wakeLockToggle.checked) {
+      wakeLockEnable();
+    }
+    else {
+      wakeLock.release()
+      .then(() => {
+        wakeLock = null;
+      });
+    }
+  })
+}
+</script>
+</body>
+</html>	
